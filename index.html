@@ -1,365 +1,1589 @@
-<!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Git e GitHub: dispensa di riferimento</title>
-<style>
-:root{--ink:#12171f;--paper:#f7f6f2;--soft:#4a5160;--line:#d9d5ca;--green:#1a7f37;--code:#0f141b}
-*{box-sizing:border-box}
-body{margin:0;font:17px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}
-header{background:var(--ink);color:#f5f3ee;padding:56px 24px}
-header div,main{max-width:760px;margin:0 auto}
-header p{margin:0 0 8px;color:#3fb950;font-weight:600;letter-spacing:3px;font-size:.8rem}
-h1{font-size:2.3rem;line-height:1.15;margin:0}
-main{padding:32px 24px 96px}
-nav{background:#fff;border:1px solid var(--line);border-radius:14px;padding:8px 24px;margin-bottom:32px}
-nav ul{columns:2;column-gap:32px;list-style:none;padding:0;margin:12px 0}
-nav li{margin:4px 0;font-size:.95rem}
-a{color:var(--green)}
-h2{font-size:1.7rem;margin:56px 0 12px;padding-top:16px;border-top:2px solid var(--ink)}
-h3{font-size:1.2rem;margin:32px 0 8px}
-p,li{margin:0 0 12px}
-li>p{margin:0}
-pre{background:var(--code);color:#e6edf3;border-radius:12px;padding:16px 20px;overflow-x:auto;font-size:.88rem;line-height:1.6;margin:16px 0}
-code{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:.9em}
-p code,li code,td code{background:#e8e5dc;padding:1px 6px;border-radius:5px}
-table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.92rem;display:block;overflow-x:auto}
-th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
-th{background:var(--ink);color:#fff}
-tr:nth-child(even) td{background:#fff}
-.partecipanti{background:#e7f4ea;border-radius:12px;padding:16px 24px 16px 44px}
-@media(max-width:600px){nav ul{columns:1}h1{font-size:1.8rem}}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.4">
+  <style type="text/css">
+    body {background-color: #f5f4ef}
+    p.p1 {margin: 0.0px 0.0px 8.0px 0.0px; font: 9.6px '.SF NS'; color: #36af3f; -webkit-text-stroke: #36af3f}
+    p.p5 {margin: 0.0px 0.0px 12.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.5px '.AppleSystemUIFontMonospaced'; color: #e0e8f0; -webkit-text-stroke: #e0e8f0; background-color: #0d1015}
+    p.p9 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff; min-height: 13.0px}
+    p.p10 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
+    p.p11 {margin: 0.0px 0.0px 0.0px 0.0px; font: 11.0px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217}
+    p.p12 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.9px '.AppleSystemUIFontMonospaced'; color: #0f1217; -webkit-text-stroke: #0f1217}
+    p.p14 {margin: 0.0px 0.0px 0.0px 0.0px; font: 9.5px '.AppleSystemUIFontMonospaced'; color: #e0e8f0; -webkit-text-stroke: #e0e8f0; background-color: #0d1015; min-height: 11.0px}
+    li.li3 {margin: 0.0px 0.0px 4.0px 0.0px; font: 11.4px 'Helvetica Neue'; color: #196f2a; -webkit-text-stroke: #196f2a}
+    li.li6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217}
+    li.li13 {margin: 0.0px 0.0px 0.0px 0.0px; font: 15.3px '.AppleSystemUIFontMonospaced'; color: #0f1217; -webkit-text-stroke: #0f1217}
+    li.li15 {margin: 0.0px 0.0px 12.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217; background-color: #e2f2e5}
+    li.li16 {margin: 0.0px 0.0px 12.0px 0.0px; font: 17.0px 'Helvetica Neue'; color: #0f1217}
+    span.s1 {font-kerning: none; background-color: #0f1217}
+    span.s2 {background-color: #ffffff; -webkit-text-stroke: 0px #000000}
+    span.s3 {text-decoration: underline ; font-kerning: none; background-color: #ffffff}
+    span.s4 {font-kerning: none}
+    span.s5 {-webkit-text-stroke: 0px #000000}
+    span.s6 {font: 15.3px '.AppleSystemUIFontMonospaced'; font-kerning: none; background-color: #e2dfd4}
+    span.s7 {font: 9.9px '.AppleSystemUIFontMonospaced'; font-kerning: none; background-color: #e2dfd4}
+    span.s8 {font-kerning: none; background-color: #e2dfd4}
+    span.s9 {font: 15.3px '.AppleSystemUIFontMonospaced'; background-color: #e2dfd4; -webkit-text-stroke: 0px #000000}
+    span.s10 {font: 17.0px 'Helvetica Neue'; -webkit-text-stroke: 0px #000000}
+    span.s11 {font: 17.0px 'Helvetica Neue'; font-kerning: none}
+    span.s12 {font: 11.0px 'Helvetica Neue'; font-kerning: none}
+    td.td1 {width: 99.4px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td2 {width: 208.1px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td3 {width: 331.1px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td4 {width: 99.4px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td5 {width: 208.1px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td6 {width: 331.1px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td7 {width: 99.4px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td8 {width: 208.1px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td9 {width: 331.1px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td10 {width: 118.7px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td11 {width: 586.4px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td12 {width: 118.7px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td13 {width: 586.4px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td14 {width: 118.7px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td15 {width: 586.4px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td16 {width: 84.8px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td17 {width: 153.7px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td18 {width: 225.9px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td19 {width: 84.8px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td20 {width: 153.7px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td21 {width: 225.9px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td22 {width: 84.8px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td23 {width: 153.7px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td24 {width: 225.9px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td25 {width: 246.6px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td26 {width: 202.8px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td27 {width: 246.6px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td28 {width: 202.8px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td29 {width: 246.6px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td30 {width: 202.8px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td31 {width: 367.8px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td32 {width: 276.5px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td33 {width: 367.8px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td34 {width: 276.5px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td35 {width: 367.8px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td36 {width: 276.5px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td37 {width: 301.1px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td38 {width: 301.1px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td39 {width: 301.1px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td40 {width: 168.6px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td41 {width: 245.4px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td42 {width: 297.0px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td43 {width: 168.6px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td44 {width: 245.4px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td45 {width: 297.0px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td46 {width: 168.6px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td47 {width: 245.4px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td48 {width: 297.0px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td49 {width: 150.6px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td50 {width: 281.5px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td51 {width: 278.9px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td52 {width: 150.6px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td53 {width: 281.5px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td54 {width: 278.9px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td55 {width: 150.6px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td56 {width: 281.5px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td57 {width: 278.9px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td58 {width: 461.3px; background-color: #0f1217; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td59 {width: 461.3px; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    td.td60 {width: 461.3px; background-color: #ffffff; margin: 0.5px 0.5px 0.5px 0.5px; border-style: solid; border-width: 1.0px 1.0px 1.0px 1.0px; border-color: #d0ccbe #d0ccbe #d0ccbe #d0ccbe; padding: 8.0px 12.0px 8.0px 12.0px}
+    ol.ol1 {list-style-type: decimal}
+    ul.ul1 {list-style-type: none}
+    ul.ul2 {list-style-type: disc}
+  </style>
 </head>
 <body>
-<header><div><p>LEZIONE GIT E GITHUB</p><h1>Git e GitHub: dispensa di riferimento</h1></div></header>
-<main>
-<nav><ul><li><a href="#1-come-usare-questa-dispensa">1. Come usare questa dispensa</a></li><li><a href="#2-perché-il-controllo-di-versione">2. Perché il controllo di versione</a></li><li><a href="#3-git-e-github-due-cose-diverse">3. Git e GitHub: due cose diverse</a></li><li><a href="#4-concetti-chiave">4. Concetti chiave</a></li><li><a href="#5-installazione-e-configurazione">5. Installazione e configurazione</a></li><li><a href="#6-il-ciclo-di-lavoro-quotidiano">6. Il ciclo di lavoro quotidiano</a></li><li><a href="#7-lavorare-con-github">7. Lavorare con GitHub</a></li><li><a href="#8-branch-e-merge">8. Branch e merge</a></li><li><a href="#9-fork-e-pull-request">9. Fork e pull request</a></li><li><a href="#10-annullare-e-recuperare">10. Annullare e recuperare</a></li><li><a href="#11-git-nei-progetti-java">11. Git nei progetti Java</a></li><li><a href="#12-buone-pratiche">12. Buone pratiche</a></li><li><a href="#13-problemi-comuni-e-soluzioni">13. Problemi comuni e soluzioni</a></li><li><a href="#14-cheat-sheet-dei-comandi">14. Cheat sheet dei comandi</a></li><li><a href="#15-glossario">15. Glossario</a></li><li><a href="#16-per-approfondire">16. Per approfondire</a></li><li><a href="#partecipanti">17. Partecipanti</a></li></ul></nav>
-<h2 id="1-come-usare-questa-dispensa">1. Come usare questa dispensa</h2>
-<p>Questa dispensa raccoglie tutto ciò che serve per usare Git e GitHub nei tuoi primi progetti, e resta valida dopo la lezione come materiale di consultazione.</p>
-<p>È pensata per chi parte da zero. Non serve saper programmare in Java, ma serve saper aprire un terminale e spostarsi tra le cartelle.</p>
-<p>Come è organizzata:</p>
-<ul><li><p>Le sezioni 2, 3 e 4 spiegano il perché e i concetti: si leggono una volta.</p></li><li><p>Le sezioni da 5 a 9 sono il percorso pratico, nell&#39;ordine in cui lo si fa a lezione.</p></li><li><p>Le sezioni da 10 a 13 servono quando lavori in squadra o quando qualcosa va storto.</p></li><li><p>Le sezioni da 14 a 16 sono da tenere aperte: cheat sheet, glossario e risorse.</p></li></ul>
-<p>Convenzioni usate nel testo:</p>
-<ul><li><p>I comandi sono scritti in blocchi di codice, da copiare nel terminale.</p></li><li><p>Ciò che è tra parentesi angolari, come <code>&lt;nome&gt;</code>, va sostituito con il tuo valore, senza le parentesi.</p></li><li><p>«Terminale» indica Terminal su macOS e Linux, oppure Git Bash o PowerShell su Windows.</p></li></ul>
-<p>Cosa ti serve per seguire la lezione: un computer con Git installato (sezione 5), un account GitHub gratuito e un editor di testo o un IDE come IntelliJ IDEA, Eclipse o VS Code.</p>
-<h2 id="2-perché-il-controllo-di-versione">2. Perché il controllo di versione</h2>
-<p>Un sistema di controllo di versione registra i cambiamenti a un insieme di file nel tempo e permette di richiamare una versione precisa in qualsiasi momento. Si usa soprattutto per il software, ma funziona con qualsiasi file di testo.</p>
-<p>Senza, si finisce a lavorare così:</p>
-<pre><code class="language-text">progetto.zip
-progetto_v2.zip
-progetto_v2_DEFINITIVO.zip
-progetto_v2_DEFINITIVO_ok_davvero.zip</code></pre>
-<p>Questo metodo lascia tre domande senza risposta:</p>
-<ul><li><p>Chi ha cambiato cosa, e quando?</p></li><li><p>Come si torna alla versione di martedì scorso?</p></li><li><p>Come lavorano in tre sullo stesso file senza sovrascriversi?</p></li></ul>
-<p>Git risponde a tutte e tre. Ogni modifica salvata ha un autore, una data e un messaggio che ne spiega il motivo. Ogni versione passata resta recuperabile. E più persone possono lavorare sullo stesso progetto in parallelo, unendo poi il lavoro.</p>
-<p>Git è nato nel 2005, creato da Linus Torvalds e dagli sviluppatori del kernel Linux per gestire un progetto enorme con centinaia di collaboratori. Oggi è lo standard del settore: quasi ogni azienda che sviluppa software lo usa.</p>
-<h3 id="cosa-significa-distribuito">Cosa significa «distribuito»</h3>
-<p>Git è un sistema di controllo di versione distribuito. Ogni copia del progetto sul tuo computer contiene l&#39;intera storia, non solo i file attuali. Per questo quasi tutte le operazioni sono locali, quindi veloci, e si può lavorare anche senza connessione.</p>
-<h3 id="git-registra-fotografie-non-differenze">Git registra fotografie, non differenze</h3>
-<p>Ogni volta che salvi lo stato del progetto, Git ne fa una fotografia (in gergo <em>snapshot</em>). Se un file non è cambiato rispetto alla fotografia precedente, Git non lo copia di nuovo: tiene un collegamento a quello vecchio.</p>
-<p>Git inoltre usa dei codici di controllo (<em>checksum</em>) per riconoscere ogni modifica. Per questo è praticamente impossibile cambiare un file senza che Git se ne accorga. Di norma si aggiungono solo dati: anche una cancellazione è una nuova informazione registrata, quindi si può annullare.</p>
-<h2 id="3-git-e-github-due-cose-diverse">3. Git e GitHub: due cose diverse</h2>
-<p>Git è lo strumento che gestisce le versioni; GitHub è un sito che ospita repository Git. Si può usare Git senza GitHub, ma non si può usare GitHub senza Git.</p>
-<table><thead><tr><th></th><th>Git</th><th>GitHub</th></tr></thead><tbody><tr><td>Cos&#39;è</td><td>Programma di controllo di versione</td><td>Servizio web che ospita repository Git</td></tr><tr><td>Dove vive</td><td>Sul tuo computer</td><td>Su internet</td></tr><tr><td>Costo</td><td>Gratuito e open source</td><td>Account gratuito, piani a pagamento per funzioni avanzate</td></tr><tr><td>Come si usa</td><td>Dal terminale o da un IDE</td><td>Dal sito web, insieme a Git</td></tr><tr><td>Cosa dà in più</td><td>Storia, branch, merge</td><td>Pull request, issue, review, profilo pubblico</td></tr></tbody></table>
-<p>Esistono piattaforme equivalenti a GitHub, come GitLab e Bitbucket. Funzionano tutte con Git: quello che impari qui vale anche per loro.</p>
-<h3 id="cosa-aggiunge-github-a-git">Cosa aggiunge GitHub a Git</h3>
-<ul><li><p><strong>Backup nel cloud.</strong> Il codice vive anche fuori dal tuo computer.</p></li><li><p><strong>Lavoro di squadra.</strong> Le pull request e le review servono a decidere insieme cosa entra nel progetto.</p></li><li><p><strong>Issue.</strong> Segnalazioni e attività da fare, collegabili al codice.</p></li><li><p><strong>Open source.</strong> Moltissimi progetti pubblici da leggere, copiare e migliorare.</p></li><li><p><strong>Vetrina.</strong> Il tuo profilo mostra cosa sai fare a chi seleziona sviluppatori.</p></li><li><p><strong>Automazioni.</strong> Con GitHub Actions si possono lanciare test e controlli a ogni modifica.</p></li></ul>
-<h3 id="tre-modi-di-usare-git">Tre modi di usare Git</h3>
-<p>Gli stessi repository si possono gestire in modi diversi, e puoi alternarli:</p>
-<ul><li><p><strong>Terminale.</strong> Il modo più completo e quello che trovi in azienda. È quello che usiamo a lezione.</p></li><li><p><strong>Interfaccia grafica.</strong> GitHub Desktop è la più semplice per iniziare; anche gli IDE hanno un pannello Git integrato.</p></li><li><p><strong>GitHub CLI.</strong> Il comando <code>gh</code> permette di fare dal terminale cose che altrimenti si fanno sul sito, come accedere o aprire una pull request.</p></li></ul>
-<p>Imparare i comandi serve anche se userai un&#39;interfaccia grafica: i nomi delle operazioni sono gli stessi, e quando qualcosa va storto i messaggi parlano il linguaggio dei comandi.</p>
-<h2 id="4-concetti-chiave">4. Concetti chiave</h2>
-<p>Prima dei comandi servono poche parole. Se le hai chiare, i comandi diventano ovvi.</p>
-<table><thead><tr><th>Termine</th><th>Significato</th></tr></thead><tbody><tr><td>Repository (repo)</td><td>La cartella di un progetto insieme a tutta la sua storia. Sul disco la storia sta nella cartella nascosta <code>.git</code>.</td></tr><tr><td>Commit</td><td>Una fotografia del progetto in un momento preciso, con autore, data e messaggio.</td></tr><tr><td>Working directory</td><td>I file così come li vedi e li modifichi sul disco.</td></tr><tr><td>Staging area</td><td>Una sala d&#39;attesa: qui scegli quali modifiche entreranno nel prossimo commit.</td></tr><tr><td>Branch</td><td>Una linea di sviluppo parallela. Permette di provare una modifica senza toccare il codice stabile.</td></tr><tr><td><code>main</code></td><td>Il branch principale, quello che deve sempre funzionare.</td></tr><tr><td>Remote</td><td>Una copia del repository ospitata altrove, di solito su GitHub.</td></tr><tr><td><code>origin</code></td><td>Il nome che Git dà di solito al remote da cui hai clonato o che hai collegato.</td></tr><tr><td>Clone</td><td>La copia completa di un repository remoto sul tuo computer, storia compresa.</td></tr><tr><td>Fork</td><td>La tua copia personale, su GitHub, del repository di qualcun altro.</td></tr><tr><td>Pull request (PR)</td><td>La richiesta di far entrare le tue modifiche in un altro branch o repository.</td></tr><tr><td>Merge</td><td>L&#39;unione di due linee di sviluppo.</td></tr></tbody></table>
-<h3 id="le-tre-aree-in-cui-vivono-i-file">Le tre aree in cui vivono i file</h3>
-<p>Ogni modifica passa per tre aree locali prima di arrivare su GitHub:</p>
-<ol><li><p><strong>Working directory.</strong> Modifichi i file con il tuo editor.</p></li><li><p><strong>Staging area.</strong> Con <code>git add</code> indichi cosa vuoi salvare.</p></li><li><p><strong>Repository locale.</strong> Con <code>git commit</code> la modifica entra nella storia.</p></li></ol>
-<p>Solo dopo <code>git push</code> il commit arriva su GitHub. Questo percorso è il filo conduttore di tutta la dispensa.</p>
-<h3 id="perché-esiste-lo-staging">Perché esiste lo staging</h3>
-<p>Puoi aver cambiato cinque file ma voler salvare solo due, perché riguardano la stessa correzione. Lo staging ti lascia scegliere. Il risultato è una storia pulita, dove ogni commit racconta una cosa sola.</p>
-<h3 id="locale-e-remoto">Locale e remoto</h3>
-<p>Il repository sul tuo computer e quello su GitHub sono due copie separate. Non si aggiornano da sole: sei tu a inviare le novità con <code>git push</code> e a scaricarle con <code>git pull</code>. Se capisci questo, hai capito metà di Git.</p>
-<h2 id="5-installazione-e-configurazione">5. Installazione e configurazione</h2>
-<p>Per lavorare servono tre cose: Git sul computer, un account GitHub e un modo per autenticarti. Fai le installazioni una volta sola.</p>
-<h3 id="git-sul-tuo-computer-in-tre-passi">Git sul tuo computer in tre passi</h3>
-<p>Non dare per scontato che Git sia già installato: sul computer di casa di solito non c&#39;è. Segui sempre questi tre passi, nell&#39;ordine.</p>
-<p><strong>Passo 1. Controlla se Git esiste.</strong> Apri il terminale (Terminale su macOS e Linux, PowerShell su Windows) e scrivi:</p>
-<pre><code>git version</code></pre>
-<ul><li><p>Se compare una riga come <code>git version 2.47.0</code>, Git c&#39;è già: salta al passo 3 e poi alla configurazione.</p></li><li><p>Se compare un errore come <code>git: command not found</code> o <code>&#39;git&#39; is not recognized</code>, Git non è installato: vai al passo 2.</p></li></ul>
-<p><strong>Passo 2. Installa Git, se manca.</strong> Scegli il tuo sistema.</p>
-<p><em>Windows.</em> Il modo più rapido è da PowerShell:</p>
-<pre><code>winget install --id Git.Git -e</code></pre>
-<p>Se <code>winget</code> non funziona, scarica l&#39;installer da git-scm.com, avvialo e accetta le opzioni predefinite cliccando sempre <strong>Next</strong>. L&#39;installazione aggiunge anche Git Bash, un terminale che capisce i comandi di questa dispensa.</p>
-<p><em>macOS.</em> Scrivere <code>git version</code> fa spesso comparire una finestra che propone di installare gli strumenti da riga di comando: clicca <strong>Installa</strong> e attendi la fine. Se la finestra non compare, lancia:</p>
-<pre><code>xcode-select --install</code></pre>
-<p>Se usi Homebrew, puoi invece installare con <code>brew install git</code>.</p>
-<p><em>Linux (Debian e Ubuntu).</em></p>
-<pre><code>sudo apt update
-sudo apt install git</code></pre>
-<p><strong>Passo 3. Conferma che sia tutto a posto.</strong> Chiudi il terminale e riaprilo: senza questo passaggio il sistema non vede il programma appena installato. Poi ripeti il controllo:</p>
-<pre><code>git version</code></pre>
-<p>Se compare il numero di versione, Git è pronto. Se compare ancora l&#39;errore, riavvia il computer e riprova; se non cambia nulla, chiedi aiuto al docente prima di andare avanti.</p>
-<h3 id="dire-a-git-chi-sei">Dire a Git chi sei</h3>
-<p>Ogni commit riporta nome ed email dell&#39;autore. Configurali una volta sola:</p>
-<pre><code>git config --global user.name &quot;Nome Cognome&quot;
-git config --global user.email &quot;tua-email@esempio.it&quot;
-git config --global init.defaultBranch main</code></pre>
-<p>Usa la stessa email del tuo account GitHub, così i commit risultano collegati al tuo profilo. Per controllare la configurazione scrivi <code>git config --global --list</code>.</p>
-<h3 id="creare-laccount-github">Creare l&#39;account GitHub</h3>
-<ol><li><p>Vai su github.com e scegli <strong>Sign up</strong>.</p></li><li><p>Inserisci email, password e uno username.</p></li><li><p>Conferma l&#39;email con il codice che ricevi.</p></li></ol>
-<p>Lo username finisce nell&#39;indirizzo del tuo profilo, e potrebbe finire in un curriculum. Scegline uno semplice e professionale, per esempio nome e cognome.</p>
-<h3 id="autenticarsi">Autenticarsi</h3>
-<p>GitHub non accetta più la password dell&#39;account quando lavori da terminale su HTTPS. Serve un altro tipo di accesso, e dipende dal sistema.</p>
-<p><strong>Windows.</strong> Non devi installare nulla: Git for Windows include Git Credential Manager. Al primo <code>git push</code> si apre una finestra del browser: accedi a GitHub e conferma. Da quel momento Git ricorda l&#39;accesso.</p>
-<p><strong>macOS.</strong> Git non apre il browser. Usa un <em>token personale</em>, che al primo <code>push</code> incolli al posto della password:</p>
-<ol><li><p>Su github.com clicca la tua foto in alto a destra, poi <strong>Settings</strong>.</p></li><li><p>In fondo al menu a sinistra scegli <strong>Developer settings</strong>, poi <strong>Personal access tokens</strong>, poi <strong>Tokens (classic)</strong>.</p></li><li><p>Clicca <strong>Generate new token (classic)</strong>. Dai un nome, scegli una scadenza (30 giorni vanno bene) e spunta la casella <strong>repo</strong>.</p></li><li><p>Clicca <strong>Generate token</strong> e <strong>copia subito il token</strong>: GitHub lo mostra una volta sola.</p></li><li><p>Al primo <code>git push</code> Git chiede lo username (il tuo username GitHub) e la password: incolla il token. Il portachiavi di macOS lo salva e non te lo chiede più.</p></li></ol>
-<p><strong>Linux.</strong> Come su macOS: token personale al posto della password.</p>
-<p><strong>Alternativa per tutti: GitHub CLI.</strong> Dopo averlo installato (pacchetto da cli.github.com; su Mac anche <code>brew install gh</code>), il comando <code>gh auth login</code> guida l&#39;accesso dal browser e configura Git al posto tuo. Non è incluso con Git: senza installazione il terminale risponde <code>command not found</code>.</p>
-<p>Un token funziona come una password: non scriverlo mai nel codice, non metterlo in un repository e non condividerlo.</p>
-<h3 id="se-qualcosa-non-va">Se qualcosa non va</h3>
-<ul><li><p><code>git: command not found</code>: Git non è installato o il terminale va riaperto.</p></li><li><p>Il <code>push</code> chiede una password e la rifiuta: stai usando la password dell&#39;account. Usa una delle tre strade qui sopra.</p></li><li><p>I commit non compaiono sul profilo: l&#39;email configurata non coincide con quella dell&#39;account GitHub.</p></li></ul>
-<h2 id="6-il-ciclo-di-lavoro-quotidiano">6. Il ciclo di lavoro quotidiano</h2>
-<p>Quasi tutto il lavoro con Git è la ripetizione di quattro gesti: guarda, aggiungi, salva, invia. Imparali a memoria.</p>
-<h3 id="creare-un-repository-locale">Creare un repository locale</h3>
-<p>Entra nella cartella del progetto e lancia:</p>
-<pre><code>cd mio-progetto
-git init</code></pre>
-<p>Git crea la cartella nascosta <code>.git</code>. Da questo momento la cartella è un repository, ma la sua storia è ancora vuota.</p>
-<h3 id="vedere-cosa-è-cambiato">Vedere cosa è cambiato</h3>
-<pre><code>git status</code></pre>
-<p>È il comando che userai di più. Ti dice quali file sono nuovi, quali modificati e quali già pronti per il commit. Nel dubbio, lancia <code>git status</code>.</p>
-<h3 id="scegliere-cosa-salvare">Scegliere cosa salvare</h3>
-<pre><code>git add Main.java
-git add .</code></pre>
-<p>Il primo comando mette in staging un file; il secondo tutti i file modificati nella cartella corrente. Prima di usare il punto, controlla con <code>git status</code> che non ci siano file che non vuoi.</p>
-<h3 id="salvare-la-fotografia">Salvare la fotografia</h3>
-<pre><code>git commit -m &quot;Aggiunge la classe Main con il saluto&quot;</code></pre>
-<p>Il messaggio dice cosa hai cambiato e, se serve, perché. Tra qualche mese sarà l&#39;unica spiegazione che avrai.</p>
-<h3 id="rivedere-la-storia">Rivedere la storia</h3>
-<pre><code>git log
-git log --oneline</code></pre>
-<p>Il primo mostra ogni commit con autore e data; il secondo una riga per commit. Se la lista è lunga, esci con il tasto <code>q</code>.</p>
-<h3 id="vedere-le-differenze">Vedere le differenze</h3>
-<pre><code>git diff
-git diff --staged</code></pre>
-<p>Il primo confronta il working directory con lo staging; il secondo confronta lo staging con l&#39;ultimo commit. Anche qui, <code>q</code> per uscire.</p>
-<h3 id="escludere-file-con-gitignore">Escludere file con .gitignore</h3>
-<p>Alcuni file non vanno nel repository: file compilati, impostazioni dell&#39;IDE, password. Si elencano in un file chiamato <code>.gitignore</code>, nella cartella principale:</p>
-<pre><code>target/
-.idea/
-*.class
-.env</code></pre>
-<p>Crealo prima del primo commit. Un file già committato non viene ignorato retroattivamente: va tolto con <code>git rm --cached nome-file</code>.</p>
-<h3 id="il-ciclo-completo">Il ciclo completo</h3>
-<table><thead><tr><th>Passo</th><th>Comando</th><th>Cosa succede</th></tr></thead><tbody><tr><td>1. Modifichi</td><td>(il tuo editor)</td><td>Cambiano i file nel working directory</td></tr><tr><td>2. Guardi</td><td><code>git status</code></td><td>Vedi lo stato di ogni file</td></tr><tr><td>3. Aggiungi</td><td><code>git add</code></td><td>Le modifiche vanno in staging</td></tr><tr><td>4. Salvi</td><td><code>git commit -m &quot;...&quot;</code></td><td>Nasce un commit nel repository locale</td></tr><tr><td>5. Invii</td><td><code>git push</code></td><td>Il commit arriva su GitHub</td></tr></tbody></table>
-<h2 id="7-lavorare-con-github">7. Lavorare con GitHub</h2>
-<p>Hai due modi per collegare una cartella a GitHub: partire da una cartella tua e collegarla a un repository nuovo, oppure clonare un repository che esiste già. Il risultato è lo stesso.</p>
-<h3 id="percorso-a-dalla-cartella-locale-a-github">Percorso A: dalla cartella locale a GitHub</h3>
-<ol><li><p>Su github.com scegli <strong>New repository</strong>, dai un nome e lascia il repository vuoto: niente README, niente <code>.gitignore</code>.</p></li><li><p>Copia l&#39;indirizzo che GitHub ti mostra, simile a <code>https://github.com/tuo-username/mio-progetto.git</code>.</p></li><li><p>Nella cartella locale, dopo almeno un commit, collega il remoto e invia:</p></li></ol>
-<pre><code>git remote add origin https://github.com/tuo-username/mio-progetto.git
-git branch -M main
-git push -u origin main</code></pre>
-<p>Il <code>-u</code> ricorda il collegamento: dopo la prima volta basta scrivere <code>git push</code>. Per controllare i remoti collegati usa <code>git remote -v</code>.</p>
-<h3 id="percorso-b-clonare-un-repository-esistente">Percorso B: clonare un repository esistente</h3>
-<pre><code>git clone https://github.com/utente/repository.git
-cd repository</code></pre>
-<p>Il clone scarica tutto: file, storia e collegamento a <code>origin</code>. Non serve né <code>git init</code> né <code>git remote add</code>. Un repository pubblico si può clonare senza account; per fare <code>push</code> servono permessi di scrittura.</p>
-<h3 id="inviare-le-modifiche-push">Inviare le modifiche: push</h3>
-<pre><code>git push</code></pre>
-<p>I commit che hai solo in locale arrivano su GitHub. Ricarica la pagina del repository per vederli.</p>
-<h3 id="scaricare-le-novità-pull">Scaricare le novità: pull</h3>
-<pre><code>git pull</code></pre>
-<p>Scarica i commit che altri hanno inviato e li unisce al tuo lavoro. Fallo sempre prima di iniziare a lavorare e prima di un <code>push</code>.</p>
-<h3 id="quando-il-push-viene-rifiutato">Quando il push viene rifiutato</h3>
-<p>Se vedi <code>rejected</code> e <code>fetch first</code>, qualcuno ha inviato commit che tu non hai. Git non ti lascia sovrascriverli. La soluzione è sempre la stessa:</p>
-<pre><code>git pull
-git push</code></pre>
-<p>Se il <code>pull</code> segnala un conflitto, vai alla sezione sui branch e sul merge.</p>
-<h3 id="https-o-ssh">HTTPS o SSH</h3>
-<p>L&#39;indirizzo del repository può avere due forme: <code>https://github.com/...</code> oppure <code>git@github.com:...</code>. La prima usa l&#39;accesso web visto nella sezione 5, la seconda le chiavi SSH. I comandi non cambiano. Se hai sbagliato forma, correggi con <code>git remote set-url origin &lt;nuovo-indirizzo&gt;</code>.</p>
-<h3 id="schema-riassuntivo">Schema riassuntivo</h3>
-<table><thead><tr><th>Voglio...</th><th>Comando</th></tr></thead><tbody><tr><td>Copiare un repo da GitHub</td><td><code>git clone &lt;url&gt;</code></td></tr><tr><td>Collegare una cartella mia a un repo vuoto</td><td><code>git remote add origin &lt;url&gt;</code></td></tr><tr><td>Inviare i miei commit</td><td><code>git push</code></td></tr><tr><td>Scaricare i commit degli altri</td><td><code>git pull</code></td></tr><tr><td>Vedere a quale remoto sono collegato</td><td><code>git remote -v</code></td></tr></tbody></table>
-<h2 id="8-branch-e-merge">8. Branch e merge</h2>
-<p>Un branch è una linea di sviluppo separata. Ti permette di lavorare a una funzione nuova senza rischiare di rompere <code>main</code>, e permette a più persone di lavorare in parallelo.</p>
-<h3 id="perché-usarli">Perché usarli</h3>
-<p>Immagina che tu e un collega modifichiate lo stesso progetto. Se lavorate entrambi su <code>main</code>, vi pestate i piedi a ogni <code>push</code>. Se ognuno ha il suo branch, le modifiche si uniscono solo quando sono pronte.</p>
-<h3 id="comandi-essenziali">Comandi essenziali</h3>
-<pre><code>git branch
-git switch -c nome-branch
-git switch main
-git branch -d nome-branch</code></pre>
-<ul><li><p><code>git branch</code> elenca i branch locali; quello attuale ha un asterisco.</p></li><li><p><code>git switch -c</code> crea un branch nuovo e ci passa sopra.</p></li><li><p><code>git switch</code> torna su un branch esistente.</p></li><li><p><code>git branch -d</code> elimina un branch già unito.</p></li></ul>
-<p>I file nella cartella cambiano quando cambi branch: è normale, Git mostra la versione di quel ramo. Se hai modifiche non salvate, Git può rifiutarsi di cambiare. Fai prima un commit.</p>
-<h3 id="dare-un-buon-nome-ai-branch">Dare un buon nome ai branch</h3>
-<p>Un nome breve che dice cosa fai: <code>fix-login</code>, <code>aggiungi-readme</code>, <code>esercizio-2</code>. Evita spazi e maiuscole.</p>
-<h3 id="unire-un-branch-merge">Unire un branch: merge</h3>
-<p>Per portare il lavoro di un branch dentro <code>main</code>:</p>
-<pre><code>git switch main
-git pull
-git merge nome-branch</code></pre>
-<p>Sei tu a decidere dove arrivano le modifiche: ti sposti sul branch di destinazione e unisci quello di origine. Su GitHub questo passaggio si fa di solito con una pull request (sezione 9).</p>
-<h3 id="inviare-un-branch-a-github">Inviare un branch a GitHub</h3>
-<pre><code>git push -u origin nome-branch</code></pre>
-<p>La prima volta serve <code>-u</code>. Poi basta <code>git push</code>.</p>
-<h3 id="i-conflitti">I conflitti</h3>
-<p>Un conflitto nasce quando due persone modificano le stesse righe dello stesso file. Git non può scegliere al posto tuo, quindi si ferma e ti chiede aiuto. Non è un errore grave, è una domanda.</p>
-<p>Git segna il file in questo modo:</p>
-<pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-System.out.println(&quot;Ciao&quot;);
-=======
-System.out.println(&quot;Buongiorno&quot;);
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; nome-branch</code></pre>
-<p>La parte tra <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> e <code>=======</code> è la tua versione; quella tra <code>=======</code> e <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> è l&#39;altra.</p>
-<h3 id="risolvere-un-conflitto-passo-per-passo">Risolvere un conflitto, passo per passo</h3>
-<ol><li><p>Lancia <code>git status</code>: i file in conflitto compaiono come <em>both modified</em>.</p></li><li><p>Apri il file e decidi cosa tenere: una versione, l&#39;altra o una combinazione.</p></li><li><p>Cancella le tre righe con <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> e <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>. Devono sparire tutte.</p></li><li><p>Salva il file, poi <code>git add nome-file</code>.</p></li><li><p>Concludi con <code>git commit</code> e, se serve, <code>git push</code>.</p></li></ol>
-<p>Se ti spaventi, puoi tornare allo stato precedente con <code>git merge --abort</code>. Il consiglio per evitare i conflitti è semplice: fai <code>git pull</code> spesso e lavora su file diversi quando possibile.</p>
-<h2 id="9-fork-e-pull-request">9. Fork e pull request</h2>
-<p>Non puoi fare <code>push</code> nel repository di uno sconosciuto, e non vorresti che lo facesse nessuno nel tuo. Fork e pull request sono il modo in cui GitHub risolve il problema.</p>
-<h3 id="il-flusso-in-sintesi">Il flusso in sintesi</h3>
-<ol><li><p><strong>Fork.</strong> Crei la tua copia del repository sul tuo account GitHub.</p></li><li><p><strong>Clone.</strong> Scarichi il tuo fork sul computer.</p></li><li><p><strong>Branch e commit.</strong> Lavori su un branch e salvi le modifiche.</p></li><li><p><strong>Push.</strong> Invii il branch al tuo fork.</p></li><li><p><strong>Pull request.</strong> Chiedi al proprietario del repository originale di accogliere le tue modifiche.</p></li><li><p><strong>Review e merge.</strong> Il proprietario guarda, commenta e, se va bene, unisce.</p></li></ol>
-<h3 id="fork">Fork</h3>
-<p>In alto a destra, nella pagina del repository, c&#39;è il pulsante <strong>Fork</strong>. Scegli il tuo account e GitHub crea la copia. Il fork resta collegato all&#39;originale, che si chiama <code>upstream</code>, ma i due si aggiornano separatamente.</p>
-<h3 id="la-pull-request">La pull request</h3>
-<p>Dopo il <code>push</code> del tuo branch, GitHub mostra un pulsante per aprire una pull request. Scrivi un titolo chiaro e una breve descrizione: cosa hai cambiato e perché. La PR mostra tutte le differenze nella scheda <strong>Files changed</strong>.</p>
-<p>Chi riceve la PR può commentare le righe, chiedere correzioni, approvare. Se aggiungi altri commit allo stesso branch e fai <code>push</code>, la PR si aggiorna da sola.</p>
-<h3 id="come-si-chiude-una-pr">Come si chiude una PR</h3>
-<p>Quando la PR è approvata, il maintainer sceglie come unirla:</p>
-<ul><li><p><strong>Create a merge commit.</strong> Mantiene tutti i commit e aggiunge un commit di unione.</p></li><li><p><strong>Squash and merge.</strong> Raggruppa tutti i commit in uno.</p></li><li><p><strong>Rebase and merge.</strong> Riapplica i commit uno per uno, senza commit di unione.</p></li></ul>
-<p>Non devi scegliere tu, quando contribuisci a un progetto altrui. Una PR può anche essere chiusa senza unione, ed è un esito normale.</p>
-<h3 id="pull-request-anche-dentro-lo-stesso-repository">Pull request anche dentro lo stesso repository</h3>
-<p>In squadra di solito non si usa il fork: ognuno ha i permessi sul repository comune, crea un branch e apre una PR verso <code>main</code>. Il flusso è identico, salvo i primi due passi.</p>
-<h3 id="un-caso-reale-diskuse">Un caso reale: diskuse</h3>
-<p>Il repository <code>msciab/diskuse</code> di Michele Sciabarra è pubblico. Nell&#39;esercizio lo cloniamo e guardiamo la sua storia. Sulla pagina del repository trovi:</p>
-<ul><li><p>il pulsante <strong>Code</strong>, da cui copi l&#39;indirizzo per il clone;</p></li><li><p>la scheda <strong>Pull requests</strong>, dove si vede come altri hanno proposto modifiche;</p></li><li><p>la scheda <strong>Commits</strong>, con l&#39;intera storia del progetto.</p></li></ul>
-<p>Leggere repository di altri è il modo più veloce per imparare come lavorano i professionisti.</p>
-<h3 id="contribuire-a-un-progetto-open-source">Contribuire a un progetto open source</h3>
-<p>Prima di aprire una PR su un progetto altrui, leggi il file <code>README</code> e, se c&#39;è, <code>CONTRIBUTING.md</code>. Spesso spiegano le regole di stile e il processo. Per cominciare, cerca le issue con l&#39;etichetta <em>good first issue</em>.</p>
-<h2 id="10-annullare-e-recuperare">10. Annullare e recuperare</h2>
-<p>Git è una rete di sicurezza: quasi tutto quello che hai salvato in un commit si può recuperare. Il comando giusto dipende da <em>dove</em> si trova l&#39;errore.</p>
-<table><thead><tr><th>Situazione</th><th>Comando</th></tr></thead><tbody><tr><td>Ho modificato un file e voglio buttare le modifiche</td><td><code>git restore file</code></td></tr><tr><td>Ho fatto <code>git add</code> per sbaglio</td><td><code>git restore --staged file</code></td></tr><tr><td>Ho sbagliato il messaggio dell&#39;ultimo commit (non ancora inviato)</td><td><code>git commit --amend -m &quot;nuovo messaggio&quot;</code></td></tr><tr><td>Voglio annullare un commit già inviato</td><td><code>git revert &lt;commit&gt;</code></td></tr><tr><td>Voglio tornare indietro in locale, buttando commit</td><td><code>git reset --hard &lt;commit&gt;</code></td></tr><tr><td>Ho perso dei commit</td><td><code>git reflog</code></td></tr></tbody></table>
-<h3 id="buttare-le-modifiche-non-salvate">Buttare le modifiche non salvate</h3>
-<pre><code>git restore Main.java</code></pre>
-<p>Il file torna com&#39;era nell&#39;ultimo commit. Attenzione: le modifiche buttate non si recuperano, perché non erano mai state salvate.</p>
-<h3 id="togliere-un-file-dallo-staging">Togliere un file dallo staging</h3>
-<pre><code>git restore --staged Main.java</code></pre>
-<p>Il file resta modificato sul disco, ma non entrerà nel prossimo commit.</p>
-<h3 id="correggere-lultimo-commit">Correggere l&#39;ultimo commit</h3>
-<pre><code>git commit --amend -m &quot;Messaggio corretto&quot;</code></pre>
-<p>Va bene solo se il commit non è ancora stato inviato con <code>push</code>. Cambiare la storia già condivisa crea problemi a chi lavora con te.</p>
-<h3 id="annullare-un-commit-già-condiviso-revert">Annullare un commit già condiviso: revert</h3>
-<pre><code>git log --oneline
-git revert a1b2c3d</code></pre>
-<p>Il codice <code>a1b2c3d</code> è l&#39;inizio dell&#39;identificativo del commit, visibile in <code>git log --oneline</code>. Il comando crea un nuovo commit che fa l&#39;operazione inversa. La storia resta intatta ed è la scelta sicura quando il lavoro è già su GitHub.</p>
-<h3 id="tornare-indietro-reset">Tornare indietro: reset</h3>
-<pre><code>git reset --hard a1b2c3d</code></pre>
-<p>Sposta il branch su quel commit e butta tutto quello che c&#39;era dopo, comprese le modifiche non salvate. È un comando distruttivo: usalo solo sul tuo lavoro locale, mai su commit già inviati a GitHub.</p>
-<h3 id="il-paracadute-reflog">Il paracadute: reflog</h3>
-<pre><code>git reflog</code></pre>
-<p>Elenca tutti i punti in cui è stato il tuo repository, anche quelli che <code>git log</code> non mostra più. Se un <code>reset</code> ti ha fatto perdere dei commit, trova qui il loro codice e torna indietro con <code>git reset --hard &lt;codice&gt;</code>.</p>
-<p>Regola pratica: finché una cosa è stata committata, è quasi sempre recuperabile. Quello che non è mai stato committato, no.</p>
-<h2 id="11-git-nei-progetti-java">11. Git nei progetti Java</h2>
-<p>Un progetto Java produce molti file che non sono codice tuo: classi compilate, impostazioni dell&#39;IDE, cartelle di build. Vanno esclusi dal repository, altrimenti ogni commit si riempie di rumore.</p>
-<h3 id="cosa-va-nel-repository">Cosa va nel repository</h3>
-<ul><li><p>Il codice sorgente (<code>src/</code>).</p></li><li><p>I file di build (<code>pom.xml</code> per Maven, <code>build.gradle</code> per Gradle).</p></li><li><p>Il <code>README.md</code> e il <code>.gitignore</code>.</p></li></ul>
-<h3 id="cosa-non-ci-va">Cosa non ci va</h3>
-<ul><li><p>Le classi compilate (<code>*.class</code>) e le cartelle di build (<code>target/</code>, <code>build/</code>).</p></li><li><p>Le impostazioni personali dell&#39;IDE (<code>.idea/</code>, <code>*.iml</code>, <code>.vscode/</code>).</p></li><li><p>I file con credenziali (<code>.env</code>, <code>application-local.properties</code>).</p></li><li><p>I file di sistema (<code>.DS_Store</code>, <code>Thumbs.db</code>).</p></li></ul>
-<h3 id="un-gitignore-di-partenza">Un .gitignore di partenza</h3>
-<pre><code># Build
-target/
-build/
-*.class
-*.jar
-
-# IDE
-.idea/
-*.iml
-.vscode/
-.project
-.classpath
-.settings/
-
-# Sistema
-.DS_Store
-Thumbs.db
-
-# Segreti e configurazioni locali
-.env
-application-local.properties</code></pre>
-<p>Puoi anche partire da un modello: nella creazione del repository su GitHub, il menu <em>Add .gitignore</em> offre il modello <strong>Java</strong>.</p>
-<h3 id="git-dentro-lide">Git dentro l&#39;IDE</h3>
-<p>IntelliJ IDEA, Eclipse e VS Code hanno un pannello Git integrato. Mostra i file modificati, permette di fare commit e push con un clic e visualizza le differenze riga per riga.</p>
-<p>Le operazioni sono quelle che hai imparato: cambiano solo i pulsanti. Se l&#39;IDE ti dà un errore che non capisci, apri il terminale nella cartella del progetto e lancia <code>git status</code>.</p>
-<h3 id="aprire-un-progetto-clonato">Aprire un progetto clonato</h3>
-<ol><li><p>Clona il repository con <code>git clone</code>.</p></li><li><p>Nell&#39;IDE scegli <em>Open</em> e seleziona la cartella clonata.</p></li><li><p>Lascia che l&#39;IDE importi la configurazione Maven o Gradle.</p></li></ol>
-<h3 id="attenzione-ai-file-già-tracciati">Attenzione ai file già tracciati</h3>
-<p>Se hai fatto un commit prima di creare il <code>.gitignore</code>, i file indesiderati ci sono già. Rimuovili dal controllo di versione, senza cancellarli dal disco:</p>
-<pre><code>git rm -r --cached .idea target
-git commit -m &quot;Rimuove file di build e IDE dal repository&quot;</code></pre>
-<h2 id="12-buone-pratiche">12. Buone pratiche</h2>
-<p>Git permette quasi tutto. Le buone pratiche sono le abitudini che rendono il lavoro leggibile per chi verrà dopo di te, compreso te stesso tra sei mesi.</p>
-<h3 id="cinque-regole-per-non-pentirsi">Cinque regole per non pentirsi</h3>
-<ol><li><p><strong>Commit piccoli, con un messaggio chiaro.</strong> Una modifica logica per commit.</p></li><li><p><strong>Prima di iniziare <code>git pull</code>, prima di chiudere <code>git push</code>.</strong> Così lavori sempre sull&#39;ultima versione.</p></li><li><p><strong>Non lavorare direttamente su <code>main</code>.</strong> Crea un branch per ogni attività.</p></li><li><p><strong>Mai password, token o chiavi nel repository.</strong> Usa il <code>.gitignore</code>.</p></li><li><p><strong>Nel dubbio, <code>git status</code>.</strong> Ti dice dove sei e cosa è successo.</p></li></ol>
-<h3 id="come-scrivere-un-buon-messaggio-di-commit">Come scrivere un buon messaggio di commit</h3>
-<p>Il messaggio risponde alla domanda: cosa fa questo commit? Una riga breve, al presente, che descrive il risultato.</p>
-<table><thead><tr><th>Da evitare</th><th>Meglio</th></tr></thead><tbody><tr><td><code>modifiche</code></td><td><code>Aggiunge la validazione dell&#39;email nel form</code></td></tr><tr><td><code>fix</code></td><td><code>Corregge il calcolo del totale con sconto</code></td></tr><tr><td><code>ultimo commit prima di cena</code></td><td><code>Rinomina la classe Cliente in Customer</code></td></tr></tbody></table>
-<p>Se serve spiegare il perché, scrivi una riga vuota e poi un paragrafo di dettaglio. Puoi usare <code>git commit</code> senza <code>-m</code> per aprire l&#39;editor.</p>
-<h3 id="regole-di-squadra">Regole di squadra</h3>
-<p>Quando si lavora in gruppo sullo stesso repository, conviene mettersi d&#39;accordo all&#39;inizio:</p>
-<ul><li><p><strong>Chi unisce in <code>main</code>.</strong> Per esempio solo dopo l&#39;approvazione di un compagno.</p></li><li><p><strong>Come si chiamano i branch.</strong> Per esempio <code>feature/nome</code> e <code>fix/nome</code>.</p></li><li><p><strong>Chi lavora su cosa.</strong> Due persone sullo stesso file significano conflitti quasi certi.</p></li><li><p><strong>Ogni quanto si fa pull.</strong> Almeno all&#39;inizio di ogni sessione di lavoro.</p></li><li><p><strong>Lingua dei messaggi.</strong> Italiano o inglese, ma sempre la stessa.</p></li></ul>
-<h3 id="il-readme">Il README</h3>
-<p>Ogni repository dovrebbe avere un <code>README.md</code> che spiega cos&#39;è il progetto, come si avvia e come si usa. È la prima cosa che vede chi apre il tuo repository, e conta molto in un portfolio. Si scrive in Markdown, un linguaggio semplice per formattare il testo.</p>
-<h3 id="i-segreti">I segreti</h3>
-<p>Password, token di accesso, chiavi di servizi esterni e credenziali del database non vanno mai nel repository, nemmeno in un repository privato.</p>
-<p>Git conserva tutta la storia: cancellare il file in un commit successivo non basta, perché il segreto resta nei commit precedenti. Se un segreto è finito su GitHub, consideralo compromesso: <strong>cambialo subito</strong> e solo dopo pensa a ripulire il repository.</p>
-<h3 id="cosa-non-fare">Cosa non fare</h3>
-<ul><li><p>Non usare <code>git push --force</code> su rami condivisi: può cancellare il lavoro degli altri.</p></li><li><p>Non committare file enormi o binari inutili.</p></li><li><p>Non fare un solo commit gigante a fine giornata.</p></li><li><p>Non rimandare i <code>pull</code>: più aspetti, più grandi saranno i conflitti.</p></li></ul>
-<h2 id="13-problemi-comuni-e-soluzioni">13. Problemi comuni e soluzioni</h2>
-<p>Quando Git dà un errore, leggi il messaggio per intero: di solito dice anche cosa fare. Questa tabella raccoglie i casi che incontrerai più spesso.</p>
-<table><thead><tr><th>Messaggio o sintomo</th><th>Causa</th><th>Soluzione</th></tr></thead><tbody><tr><td><code>git: command not found</code></td><td>Git non è installato, o il terminale è stato aperto prima dell&#39;installazione</td><td>Installa Git; chiudi e riapri il terminale</td></tr><tr><td><code>fatal: not a git repository</code></td><td>Sei in una cartella che non è un repository</td><td>Entra nella cartella giusta con <code>cd</code>, oppure lancia <code>git init</code></td></tr><tr><td><code>Author identity unknown</code></td><td>Nome ed email non configurati</td><td><code>git config --global user.name</code> e <code>user.email</code> (sezione 5)</td></tr><tr><td><code>nothing to commit, working tree clean</code></td><td>Non ci sono modifiche da salvare</td><td>È normale: hai già committato tutto</td></tr><tr><td><code>nothing added to commit</code></td><td>Hai modificato dei file ma non li hai aggiunti</td><td>Lancia <code>git add</code> e poi <code>git commit</code></td></tr><tr><td><code>remote origin already exists</code></td><td>Il remoto è già collegato</td><td><code>git remote -v</code> per controllare; <code>git remote set-url origin &lt;url&gt;</code> per cambiarlo</td></tr><tr><td><code>Authentication failed</code> o password rifiutata</td><td>Stai usando la password dell&#39;account</td><td>Usa <code>gh auth login</code>, il Credential Manager o una chiave SSH (sezione 5)</td></tr><tr><td><code>Permission denied (publickey)</code></td><td>La chiave SSH non è configurata</td><td>Passa all&#39;indirizzo HTTPS, oppure carica la chiave su GitHub</td></tr><tr><td><code>repository not found</code></td><td>Indirizzo sbagliato, o repository privato senza accesso</td><td>Controlla l&#39;indirizzo e di aver fatto l&#39;accesso con l&#39;account giusto</td></tr><tr><td><code>rejected ... fetch first</code></td><td>Su GitHub ci sono commit che non hai</td><td><code>git pull</code> e poi <code>git push</code></td></tr><tr><td><code>CONFLICT (content)</code></td><td>Due modifiche sulle stesse righe</td><td>Risolvi il conflitto come nella sezione 8</td></tr><tr><td><code>You have unstaged changes</code></td><td>Hai modifiche non salvate e vuoi cambiare branch o fare pull</td><td>Fai un commit, oppure <code>git stash</code> per metterle da parte</td></tr><tr><td>Il file <code>.gitignore</code> non funziona</td><td>Il file era già stato committato</td><td><code>git rm --cached nome-file</code>, poi commit</td></tr><tr><td><code>detached HEAD</code></td><td>Ti sei spostato su un commit e non su un branch</td><td><code>git switch main</code> per tornare</td></tr></tbody></table>
-<h3 id="un-metodo-per-ogni-problema">Un metodo per ogni problema</h3>
-<ol><li><p><strong>Leggi il messaggio.</strong> Spesso contiene la soluzione.</p></li><li><p><strong>Lancia <code>git status</code>.</strong> Ti dice in che stato è il repository.</p></li><li><p><strong>Non improvvisare comandi distruttivi.</strong> <code>reset --hard</code> e <code>push --force</code> si usano solo quando sai cosa fai.</p></li><li><p><strong>Copia il messaggio d&#39;errore e cercalo.</strong> È quello che fanno tutti gli sviluppatori.</p></li><li><p><strong>Chiedi aiuto con il contesto giusto.</strong> Porta l&#39;output di <code>git status</code> e <code>git log --oneline</code>.</p></li></ol>
-<h3 id="mettere-da-parte-il-lavoro-stash">Mettere da parte il lavoro: stash</h3>
-<p>Se devi cambiare branch ma non sei pronto a fare un commit:</p>
-<pre><code>git stash
-git switch altro-branch
-...
-git switch branch-originale
-git stash pop</code></pre>
-<p><code>git stash</code> mette le modifiche in un cassetto temporaneo; <code>git stash pop</code> le riprende.</p>
-<h3 id="ultima-risorsa">Ultima risorsa</h3>
-<p>Se il repository locale è in uno stato che non capisci, e il lavoro importante è già su GitHub, puoi sempre clonare di nuovo in una cartella nuova. Non è elegante, ma funziona.</p>
-<h2 id="14-cheat-sheet-dei-comandi">14. Cheat sheet dei comandi</h2>
-<p>Stampa questa pagina o tienila aperta mentre lavori.</p>
-<table><thead><tr><th>Comando</th><th>Cosa fa</th><th>Esempio</th></tr></thead><tbody><tr><td><code>git --version</code></td><td>Mostra la versione di Git</td><td><code>git --version</code></td></tr><tr><td><code>git config --global</code></td><td>Imposta nome, email e preferenze</td><td><code>git config --global user.name &quot;Anna Rossi&quot;</code></td></tr><tr><td><code>git init</code></td><td>Trasforma la cartella in repository</td><td><code>git init</code></td></tr><tr><td><code>git clone &lt;url&gt;</code></td><td>Copia un repository da GitHub</td><td><code>git clone https://github.com/utente/repo.git</code></td></tr><tr><td><code>git status</code></td><td>Mostra lo stato di ogni file</td><td><code>git status</code></td></tr><tr><td><code>git add</code></td><td>Mette le modifiche in staging</td><td><code>git add .</code> oppure <code>git add Main.java</code></td></tr><tr><td><code>git commit -m</code></td><td>Salva una fotografia con un messaggio</td><td><code>git commit -m &quot;Aggiunge il README&quot;</code></td></tr><tr><td><code>git log --oneline</code></td><td>Mostra la storia, una riga per commit</td><td><code>git log --oneline</code></td></tr><tr><td><code>git diff</code></td><td>Mostra le modifiche non ancora in staging</td><td><code>git diff</code></td></tr><tr><td><code>git remote add origin</code></td><td>Collega la cartella a un repository remoto</td><td><code>git remote add origin &lt;url&gt;</code></td></tr><tr><td><code>git remote -v</code></td><td>Elenca i remoti collegati</td><td><code>git remote -v</code></td></tr><tr><td><code>git push</code></td><td>Invia i commit a GitHub</td><td><code>git push -u origin main</code> (prima volta)</td></tr><tr><td><code>git pull</code></td><td>Scarica e unisce le novità</td><td><code>git pull</code></td></tr><tr><td><code>git branch</code></td><td>Elenca i branch</td><td><code>git branch</code></td></tr><tr><td><code>git switch -c</code></td><td>Crea un branch e ci passa sopra</td><td><code>git switch -c fix-login</code></td></tr><tr><td><code>git switch</code></td><td>Cambia branch</td><td><code>git switch main</code></td></tr><tr><td><code>git merge</code></td><td>Unisce un branch in quello attuale</td><td><code>git merge fix-login</code></td></tr><tr><td><code>git restore</code></td><td>Butta le modifiche non salvate</td><td><code>git restore Main.java</code></td></tr><tr><td><code>git restore --staged</code></td><td>Toglie un file dallo staging</td><td><code>git restore --staged Main.java</code></td></tr><tr><td><code>git revert</code></td><td>Annulla un commit già condiviso con un nuovo commit</td><td><code>git revert a1b2c3d</code></td></tr><tr><td><code>git reset --hard</code></td><td>Torna indietro e butta i commit successivi</td><td><code>git reset --hard a1b2c3d</code></td></tr><tr><td><code>git reflog</code></td><td>Elenca tutti gli spostamenti del repository</td><td><code>git reflog</code></td></tr><tr><td><code>git stash</code></td><td>Mette da parte le modifiche non salvate</td><td><code>git stash</code> e poi <code>git stash pop</code></td></tr></tbody></table>
-<h3 id="il-ciclo-base-in-cinque-righe">Il ciclo base in cinque righe</h3>
-<pre><code>git pull
-git status
-git add .
-git commit -m &quot;Descrizione della modifica&quot;
-git push</code></pre>
-<h3 id="il-flusso-con-un-branch">Il flusso con un branch</h3>
-<pre><code>git switch -c nuova-funzione
-# ... lavori, poi:
-git add .
-git commit -m &quot;Descrizione&quot;
-git push -u origin nuova-funzione
-# ... poi apri la pull request su GitHub</code></pre>
-<h2 id="15-glossario">15. Glossario</h2>
-<table><thead><tr><th>Termine</th><th>Definizione</th></tr></thead><tbody><tr><td>Branch</td><td>Linea di sviluppo parallela all&#39;interno di un repository.</td></tr><tr><td>Checksum</td><td>Codice calcolato dal contenuto di un file; Git lo usa per accorgersi di ogni modifica.</td></tr><tr><td>Clone</td><td>Copia completa di un repository remoto sul proprio computer.</td></tr><tr><td>Commit</td><td>Fotografia del progetto in un momento preciso, con autore, data e messaggio.</td></tr><tr><td>Conflitto</td><td>Situazione in cui Git non sa quale tra due modifiche alle stesse righe tenere.</td></tr><tr><td>Fork</td><td>Copia personale, su GitHub, del repository di un altro utente.</td></tr><tr><td><code>HEAD</code></td><td>Puntatore al commit su cui ti trovi in questo momento.</td></tr><tr><td>Issue</td><td>Segnalazione o attività da fare, aperta su GitHub e collegabile al codice.</td></tr><tr><td>Maintainer</td><td>Chi gestisce un repository e decide quali modifiche accogliere.</td></tr><tr><td>Main</td><td>Nome abituale del branch principale.</td></tr><tr><td>Merge</td><td>Unione di due linee di sviluppo.</td></tr><tr><td>Origin</td><td>Nome abituale del repository remoto collegato.</td></tr><tr><td>Pull</td><td>Scaricare dal remoto i commit nuovi e unirli al proprio lavoro.</td></tr><tr><td>Pull request (PR)</td><td>Richiesta di unire le proprie modifiche in un altro branch o repository.</td></tr><tr><td>Push</td><td>Inviare al remoto i propri commit.</td></tr><tr><td>README</td><td>File che presenta il progetto; su GitHub viene mostrato nella pagina del repository.</td></tr><tr><td>Remote</td><td>Copia del repository ospitata altrove, di solito su GitHub.</td></tr><tr><td>Repository (repo)</td><td>Cartella di progetto insieme alla sua storia.</td></tr><tr><td>Review</td><td>Revisione delle modifiche di una PR da parte di altri.</td></tr><tr><td>Staging area</td><td>Area in cui si scelgono le modifiche che entreranno nel prossimo commit.</td></tr><tr><td>Stash</td><td>Cassetto temporaneo dove mettere da parte modifiche non ancora committate.</td></tr><tr><td>Upstream</td><td>Il repository originale da cui un fork è stato creato.</td></tr><tr><td>Working directory</td><td>I file così come appaiono sul disco, modificabili con l&#39;editor.</td></tr></tbody></table>
-<h2 id="16-per-approfondire">16. Per approfondire</h2>
-<ul><li><p><strong>Pro Git</strong> di Scott Chacon e Ben Straub: il libro ufficiale, gratuito e disponibile anche in italiano su git-scm.com/book.</p></li><li><p><strong>Documentazione di GitHub</strong> su docs.github.com, con guide per ogni funzione.</p></li><li><p><strong>GitHub Skills</strong> su skills.github.com: piccoli corsi interattivi che si svolgono dentro un repository vero.</p></li><li><p><strong>Learn Git Branching</strong> su learngitbranching.js.org: un gioco visuale per capire branch e merge.</p></li><li><p><strong>Oh Shit, Git!?!</strong> su ohshitgit.com: soluzioni rapide ai problemi più comuni, in inglese.</p></li><li><p><strong>Il <code>git help</code></strong>: scrivendo <code>git help commit</code> (o qualsiasi altro comando) si apre il manuale integrato.</p></li></ul>
-<h3 id="come-continuare-dopo-il-corso">Come continuare dopo il corso</h3>
-<ol><li><p>Crea un repository per ogni esercizio di Java che svolgi.</p></li><li><p>Scrivi un <code>README</code> per ognuno, anche breve.</p></li><li><p>Contribuisci a un piccolo progetto open source, anche solo correggendo un refuso nella documentazione.</p></li><li><p>Usa branch e pull request anche nei progetti personali: è l&#39;allenamento migliore.</p></li></ol>
-
-<h2 id="partecipanti">17. Partecipanti</h2>
-<p>Chi ha fatto l'esercizio di fork e clone compare qui. Aggiungi una riga con il tuo nome subito sotto l'ultima.</p>
-<ul class="partecipanti">
-  <li>Roberto Maggiora</li>
-  <!-- Aggiungi qui la tua riga, nel formato: <li>Nome Cognome</li> -->
+<p class="p1"><span class="s1"><b>LEZIONE GIT E GITHUB</b><b></b></span></p>
+<h1 style="margin: 0.0px 0.0px 0.0px 0.0px; font: 27.6px 'Helvetica Neue'; color: #f2f0ea; -webkit-text-stroke: #f2f0ea"><span class="s1"><b>Git e GitHub: dispensa di riferimento</b><b></b></span></h1>
+<ul class="ul1">
+  <li class="li3"><span class="s2"></span><span class="s3">1. Come usare questa dispensa</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">2. Perché il controllo di versione</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">3. Git e GitHub: due cose diverse</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">4. Concetti chiave</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">5. Installazione e configurazione</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">6. Il ciclo di lavoro quotidiano</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">7. Lavorare con GitHub</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">8. Branch e merge</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">9. Fork e pull request</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">10. Annullare e recuperare</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">11. Git nei progetti Java</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">12. Buone pratiche</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">13. Problemi comuni e soluzioni</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">14. Cheat sheet dei comandi</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">15. Glossario</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">16. Per approfondire</span></li>
+  <li class="li3"><span class="s2"></span><span class="s3">17. Partecipanti</span></li>
 </ul>
-
-</main>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>1. Come usare questa dispensa</b></span></h2>
+<p class="p5"><span class="s4">Questa dispensa raccoglie tutto ciò che serve per usare Git e GitHub nei tuoi primi progetti, e resta valida dopo la lezione come materiale di consultazione.</span></p>
+<p class="p5"><span class="s4">È pensata per chi parte da zero. Non serve saper programmare in Java, ma serve saper aprire un terminale e spostarsi tra le cartelle.</span></p>
+<p class="p5"><span class="s4">Come è organizzata:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">Le sezioni 2, 3 e 4 spiegano il perché e i concetti: si leggono una volta.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Le sezioni da 5 a 9 sono il percorso pratico, nell'ordine in cui lo si fa a lezione.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Le sezioni da 10 a 13 servono quando lavori in squadra o quando qualcosa va storto.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Le sezioni da 14 a 16 sono da tenere aperte: cheat sheet, glossario e risorse.</span></li>
+</ul>
+<p class="p5"><span class="s4">Convenzioni usate nel testo:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">I comandi sono scritti in blocchi di codice, da copiare nel terminale.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Ciò che è tra parentesi angolari, come </span><span class="s6">&lt;nome&gt;</span><span class="s4">, va sostituito con il tuo valore, senza le parentesi.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">«Terminale» indica Terminal su macOS e Linux, oppure Git Bash o PowerShell su Windows.</span></li>
+</ul>
+<p class="p5"><span class="s4">Cosa ti serve per seguire la lezione: un computer con Git installato (sezione 5), un account GitHub gratuito e un editor di testo o un IDE come IntelliJ IDEA, Eclipse o VS Code.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>2. Perché il controllo di versione</b></span></h2>
+<p class="p5"><span class="s4">Un sistema di controllo di versione registra i cambiamenti a un insieme di file nel tempo e permette di richiamare una versione precisa in qualsiasi momento. Si usa soprattutto per il software, ma funziona con qualsiasi file di testo.</span></p>
+<p class="p5"><span class="s4">Senza, si finisce a lavorare così:</span></p>
+<p class="p7"><span class="s4">progetto.zip</span></p>
+<p class="p7"><span class="s4">progetto_v2.zip</span></p>
+<p class="p7"><span class="s4">progetto_v2_DEFINITIVO.zip</span></p>
+<p class="p7"><span class="s4">progetto_v2_DEFINITIVO_ok_davvero.zip</span></p>
+<p class="p5"><span class="s4">Questo metodo lascia tre domande senza risposta:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">Chi ha cambiato cosa, e quando?</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Come si torna alla versione di martedì scorso?</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Come lavorano in tre sullo stesso file senza sovrascriversi?</span></li>
+</ul>
+<p class="p5"><span class="s4">Git risponde a tutte e tre. Ogni modifica salvata ha un autore, una data e un messaggio che ne spiega il motivo. Ogni versione passata resta recuperabile. E più persone possono lavorare sullo stesso progetto in parallelo, unendo poi il lavoro.</span></p>
+<p class="p5"><span class="s4">Git è nato nel 2005, creato da Linus Torvalds e dagli sviluppatori del kernel Linux per gestire un progetto enorme con centinaia di collaboratori. Oggi è lo standard del settore: quasi ogni azienda che sviluppa software lo usa.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Cosa significa «distribuito»</b></span></h3>
+<p class="p5"><span class="s4">Git è un sistema di controllo di versione distribuito. Ogni copia del progetto sul tuo computer contiene l'intera storia, non solo i file attuali. Per questo quasi tutte le operazioni sono locali, quindi veloci, e si può lavorare anche senza connessione.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Git registra fotografie, non differenze</b></span></h3>
+<p class="p5"><span class="s4">Ogni volta che salvi lo stato del progetto, Git ne fa una fotografia (in gergo <i>snapshot</i>). Se un file non è cambiato rispetto alla fotografia precedente, Git non lo copia di nuovo: tiene un collegamento a quello vecchio.</span></p>
+<p class="p5"><span class="s4">Git inoltre usa dei codici di controllo (<i>checksum</i>) per riconoscere ogni modifica. Per questo è praticamente impossibile cambiare un file senza che Git se ne accorga. Di norma si aggiungono solo dati: anche una cancellazione è una nuova informazione registrata, quindi si può annullare.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>3. Git e GitHub: due cose diverse</b></span></h2>
+<p class="p5"><span class="s4">Git è lo strumento che gestisce le versioni; GitHub è un sito che ospita repository Git. Si può usare Git senza GitHub, ma non si può usare GitHub senza Git.</span></p>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td1">
+        <p class="p9"><span class="s4"><b></b></span><br></p>
+      </td>
+      <td valign="top" class="td2">
+        <p class="p10"><span class="s4"><b>Git</b></span></p>
+      </td>
+      <td valign="top" class="td3">
+        <p class="p10"><span class="s4"><b>GitHub</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td4">
+        <p class="p11"><span class="s4">Cos'è</span></p>
+      </td>
+      <td valign="top" class="td5">
+        <p class="p11"><span class="s4">Programma di controllo di versione</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p11"><span class="s4">Servizio web che ospita repository Git</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td7">
+        <p class="p11"><span class="s4">Dove vive</span></p>
+      </td>
+      <td valign="top" class="td8">
+        <p class="p11"><span class="s4">Sul tuo computer</span></p>
+      </td>
+      <td valign="top" class="td9">
+        <p class="p11"><span class="s4">Su internet</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td4">
+        <p class="p11"><span class="s4">Costo</span></p>
+      </td>
+      <td valign="top" class="td5">
+        <p class="p11"><span class="s4">Gratuito e open source</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p11"><span class="s4">Account gratuito, piani a pagamento per funzioni avanzate</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td7">
+        <p class="p11"><span class="s4">Come si usa</span></p>
+      </td>
+      <td valign="top" class="td8">
+        <p class="p11"><span class="s4">Dal terminale o da un IDE</span></p>
+      </td>
+      <td valign="top" class="td9">
+        <p class="p11"><span class="s4">Dal sito web, insieme a Git</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td4">
+        <p class="p11"><span class="s4">Cosa dà in più</span></p>
+      </td>
+      <td valign="top" class="td5">
+        <p class="p11"><span class="s4">Storia, branch, merge</span></p>
+      </td>
+      <td valign="top" class="td6">
+        <p class="p11"><span class="s4">Pull request, issue, review, profilo pubblico</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="p5"><span class="s4">Esistono piattaforme equivalenti a GitHub, come GitLab e Bitbucket. Funzionano tutte con Git: quello che impari qui vale anche per loro.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Cosa aggiunge GitHub a Git</b></span></h3>
+<ul class="ul2">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Backup nel cloud.</b> Il codice vive anche fuori dal tuo computer.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Lavoro di squadra.</b> Le pull request e le review servono a decidere insieme cosa entra nel progetto.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Issue.</b> Segnalazioni e attività da fare, collegabili al codice.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Open source.</b> Moltissimi progetti pubblici da leggere, copiare e migliorare.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Vetrina.</b> Il tuo profilo mostra cosa sai fare a chi seleziona sviluppatori.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Automazioni.</b> Con GitHub Actions si possono lanciare test e controlli a ogni modifica.</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Tre modi di usare Git</b></span></h3>
+<p class="p5"><span class="s4">Gli stessi repository si possono gestire in modi diversi, e puoi alternarli:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Terminale.</b> Il modo più completo e quello che trovi in azienda. È quello che usiamo a lezione.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Interfaccia grafica.</b> GitHub Desktop è la più semplice per iniziare; anche gli IDE hanno un pannello Git integrato.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>GitHub CLI.</b> Il comando </span><span class="s6">gh</span><span class="s4"> permette di fare dal terminale cose che altrimenti si fanno sul sito, come accedere o aprire una pull request.</span></li>
+</ul>
+<p class="p5"><span class="s4">Imparare i comandi serve anche se userai un'interfaccia grafica: i nomi delle operazioni sono gli stessi, e quando qualcosa va storto i messaggi parlano il linguaggio dei comandi.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>4. Concetti chiave</b></span></h2>
+<p class="p5"><span class="s4">Prima dei comandi servono poche parole. Se le hai chiare, i comandi diventano ovvi.</span></p>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td10">
+        <p class="p10"><span class="s4"><b>Termine</b></span></p>
+      </td>
+      <td valign="top" class="td11">
+        <p class="p10"><span class="s4"><b>Significato</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Repository (repo)</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p11"><span class="s4">La cartella di un progetto insieme a tutta la sua storia. Sul disco la storia sta nella cartella nascosta </span><span class="s7">.git</span><span class="s4">.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Commit</span></p>
+      </td>
+      <td valign="top" class="td15">
+        <p class="p11"><span class="s4">Una fotografia del progetto in un momento preciso, con autore, data e messaggio.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Working directory</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p11"><span class="s4">I file così come li vedi e li modifichi sul disco.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Staging area</span></p>
+      </td>
+      <td valign="top" class="td15">
+        <p class="p11"><span class="s4">Una sala d'attesa: qui scegli quali modifiche entreranno nel prossimo commit.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Branch</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p11"><span class="s4">Una linea di sviluppo parallela. Permette di provare una modifica senza toccare il codice stabile.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p12"><span class="s8">main</span></p>
+      </td>
+      <td valign="top" class="td15">
+        <p class="p11"><span class="s4">Il branch principale, quello che deve sempre funzionare.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Remote</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p11"><span class="s4">Una copia del repository ospitata altrove, di solito su GitHub.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p12"><span class="s8">origin</span></p>
+      </td>
+      <td valign="top" class="td15">
+        <p class="p11"><span class="s4">Il nome che Git dà di solito al remote da cui hai clonato o che hai collegato.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Clone</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p11"><span class="s4">La copia completa di un repository remoto sul tuo computer, storia compresa.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Fork</span></p>
+      </td>
+      <td valign="top" class="td15">
+        <p class="p11"><span class="s4">La tua copia personale, su GitHub, del repository di qualcun altro.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Pull request (PR)</span></p>
+      </td>
+      <td valign="top" class="td13">
+        <p class="p11"><span class="s4">La richiesta di far entrare le tue modifiche in un altro branch o repository.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Merge</span></p>
+      </td>
+      <td valign="top" class="td15">
+        <p class="p11"><span class="s4">L'unione di due linee di sviluppo.</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Le tre aree in cui vivono i file</b></span></h3>
+<p class="p5"><span class="s4">Ogni modifica passa per tre aree locali prima di arrivare su GitHub:</span></p>
+<ol class="ol1">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Working directory.</b> Modifichi i file con il tuo editor.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Staging area.</b> Con </span><span class="s6">git add</span><span class="s4"> indichi cosa vuoi salvare.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Repository locale.</b> Con </span><span class="s6">git commit</span><span class="s4"> la modifica entra nella storia.</span></li>
+</ol>
+<p class="p5"><span class="s4">Solo dopo </span><span class="s6">git push</span><span class="s4"> il commit arriva su GitHub. Questo percorso è il filo conduttore di tutta la dispensa.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Perché esiste lo staging</b></span></h3>
+<p class="p5"><span class="s4">Puoi aver cambiato cinque file ma voler salvare solo due, perché riguardano la stessa correzione. Lo staging ti lascia scegliere. Il risultato è una storia pulita, dove ogni commit racconta una cosa sola.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Locale e remoto</b></span></h3>
+<p class="p5"><span class="s4">Il repository sul tuo computer e quello su GitHub sono due copie separate. Non si aggiornano da sole: sei tu a inviare le novità con </span><span class="s6">git push</span><span class="s4"> e a scaricarle con </span><span class="s6">git pull</span><span class="s4">. Se capisci questo, hai capito metà di Git.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>5. Installazione e configurazione</b></span></h2>
+<p class="p5"><span class="s4">Per lavorare servono tre cose: Git sul computer, un account GitHub e un modo per autenticarti. Fai le installazioni una volta sola.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Git sul tuo computer in tre passi</b></span></h3>
+<p class="p5"><span class="s4">Non dare per scontato che Git sia già installato: sul computer di casa di solito non c'è. Segui sempre questi tre passi, nell'ordine.</span></p>
+<p class="p5"><span class="s4"><b>Passo 1. Controlla se Git esiste.</b> Apri il terminale (Terminale su macOS e Linux, PowerShell su Windows) e scrivi:</span></p>
+<p class="p7"><span class="s4">git version</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">Se compare una riga come </span><span class="s6">git version 2.47.0</span><span class="s4">, Git c'è già: salta al passo 3 e poi alla configurazione.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Se compare un errore come </span><span class="s6">git: command not found</span><span class="s4"> o </span><span class="s6">'git' is not recognized</span><span class="s4">, Git non è installato: vai al passo 2.</span></li>
+</ul>
+<p class="p5"><span class="s4"><b>Passo 2. Installa Git, se manca.</b> Scegli il tuo sistema.</span></p>
+<p class="p5"><span class="s4"><i>Windows.</i> Il modo più rapido è da PowerShell:</span></p>
+<p class="p7"><span class="s4">winget install --id Git.Git -e</span></p>
+<p class="p5"><span class="s4">Se </span><span class="s6">winget</span><span class="s4"> non funziona, scarica l'installer da git-scm.com, avvialo e accetta le opzioni predefinite cliccando sempre <b>Next</b>. L'installazione aggiunge anche Git Bash, un terminale che capisce i comandi di questa dispensa.</span></p>
+<p class="p5"><span class="s4"><i>macOS.</i> Scrivere </span><span class="s6">git version</span><span class="s4"> fa spesso comparire una finestra che propone di installare gli strumenti da riga di comando: clicca <b>Installa</b> e attendi la fine. Se la finestra non compare, lancia:</span></p>
+<p class="p7"><span class="s4">xcode-select --install</span></p>
+<p class="p5"><span class="s4">Se usi Homebrew, puoi invece installare con </span><span class="s6">brew install git</span><span class="s4">.</span></p>
+<p class="p5"><span class="s4"><i>Linux (Debian e Ubuntu).</i><i></i></span></p>
+<p class="p7"><span class="s4">sudo apt update</span></p>
+<p class="p7"><span class="s4">sudo apt install git</span></p>
+<p class="p5"><span class="s4"><b>Passo 3. Conferma che sia tutto a posto.</b> Chiudi il terminale e riaprilo: senza questo passaggio il sistema non vede il programma appena installato. Poi ripeti il controllo:</span></p>
+<p class="p7"><span class="s4">git version</span></p>
+<p class="p5"><span class="s4">Se compare il numero di versione, Git è pronto. Se compare ancora l'errore, riavvia il computer e riprova; se non cambia nulla, chiedi aiuto al docente prima di andare avanti.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Dire a Git chi sei</b></span></h3>
+<p class="p5"><span class="s4">Ogni commit riporta nome ed email dell'autore. Configurali una volta sola:</span></p>
+<p class="p7"><span class="s4">git config --global user.name "Nome Cognome"</span></p>
+<p class="p7"><span class="s4">git config --global user.email "tua-email@esempio.it"</span></p>
+<p class="p7"><span class="s4">git config --global init.defaultBranch main</span></p>
+<p class="p5"><span class="s4">Usa la stessa email del tuo account GitHub, così i commit risultano collegati al tuo profilo. Per controllare la configurazione scrivi </span><span class="s6">git config --global --list</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Creare l'account GitHub</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"></span><span class="s4">Vai su github.com e scegli <b>Sign up</b>.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Inserisci email, password e uno username.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Conferma l'email con il codice che ricevi.</span></li>
+</ol>
+<p class="p5"><span class="s4">Lo username finisce nell'indirizzo del tuo profilo, e potrebbe finire in un curriculum. Scegline uno semplice e professionale, per esempio nome e cognome.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Autenticarsi</b></span></h3>
+<p class="p5"><span class="s4">GitHub non accetta più la password dell'account quando lavori da terminale su HTTPS. Serve un altro tipo di accesso, e dipende dal sistema.</span></p>
+<p class="p5"><span class="s4"><b>Windows.</b> Non devi installare nulla: Git for Windows include Git Credential Manager. Al primo </span><span class="s6">git push</span><span class="s4"> si apre una finestra del browser: accedi a GitHub e conferma. Da quel momento Git ricorda l'accesso.</span></p>
+<p class="p5"><span class="s4"><b>macOS.</b> Git non apre il browser. Usa un <i>token personale</i>, che al primo </span><span class="s6">push</span><span class="s4"> incolli al posto della password:</span></p>
+<ol class="ol1">
+  <li class="li6"><span class="s5"></span><span class="s4">Su github.com clicca la tua foto in alto a destra, poi <b>Settings</b>.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">In fondo al menu a sinistra scegli <b>Developer settings</b>, poi <b>Personal access tokens</b>, poi <b>Tokens (classic)</b>.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Clicca <b>Generate new token (classic)</b>. Dai un nome, scegli una scadenza (30 giorni vanno bene) e spunta la casella <b>repo</b>.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Clicca <b>Generate token</b> e <b>copia subito il token</b>: GitHub lo mostra una volta sola.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Al primo </span><span class="s6">git push</span><span class="s4"> Git chiede lo username (il tuo username GitHub) e la password: incolla il token. Il portachiavi di macOS lo salva e non te lo chiede più.</span></li>
+</ol>
+<p class="p5"><span class="s4"><b>Linux.</b> Come su macOS: token personale al posto della password.</span></p>
+<p class="p5"><span class="s4"><b>Alternativa per tutti: GitHub CLI.</b> Dopo averlo installato (pacchetto da cli.github.com; su Mac anche </span><span class="s6">brew install gh</span><span class="s4">), il comando </span><span class="s6">gh auth login</span><span class="s4"> guida l'accesso dal browser e configura Git al posto tuo. Non è incluso con Git: senza installazione il terminale risponde </span><span class="s6">command not found</span><span class="s4">.</span></p>
+<p class="p5"><span class="s4">Un token funziona come una password: non scriverlo mai nel codice, non metterlo in un repository e non condividerlo.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Se qualcosa non va</b></span></h3>
+<ul class="ul2">
+  <li class="li6"><span class="s9"></span><span class="s6">git: command not found</span><span class="s4">: Git non è installato o il terminale va riaperto.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Il </span><span class="s6">push</span><span class="s4"> chiede una password e la rifiuta: stai usando la password dell'account. Usa una delle tre strade qui sopra.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">I commit non compaiono sul profilo: l'email configurata non coincide con quella dell'account GitHub.</span></li>
+</ul>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>6. Il ciclo di lavoro quotidiano</b></span></h2>
+<p class="p5"><span class="s4">Quasi tutto il lavoro con Git è la ripetizione di quattro gesti: guarda, aggiungi, salva, invia. Imparali a memoria.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Creare un repository locale</b></span></h3>
+<p class="p5"><span class="s4">Entra nella cartella del progetto e lancia:</span></p>
+<p class="p7"><span class="s4">cd mio-progetto</span></p>
+<p class="p7"><span class="s4">git init</span></p>
+<p class="p5"><span class="s4">Git crea la cartella nascosta </span><span class="s6">.git</span><span class="s4">. Da questo momento la cartella è un repository, ma la sua storia è ancora vuota.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Vedere cosa è cambiato</b></span></h3>
+<p class="p7"><span class="s4">git status</span></p>
+<p class="p5"><span class="s4">È il comando che userai di più. Ti dice quali file sono nuovi, quali modificati e quali già pronti per il commit. Nel dubbio, lancia </span><span class="s6">git status</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Scegliere cosa salvare</b></span></h3>
+<p class="p7"><span class="s4">git add Main.java</span></p>
+<p class="p7"><span class="s4">git add .</span></p>
+<p class="p5"><span class="s4">Il primo comando mette in staging un file; il secondo tutti i file modificati nella cartella corrente. Prima di usare il punto, controlla con </span><span class="s6">git status</span><span class="s4"> che non ci siano file che non vuoi.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Salvare la fotografia</b></span></h3>
+<p class="p7"><span class="s4">git commit -m "Aggiunge la classe Main con il saluto"</span></p>
+<p class="p5"><span class="s4">Il messaggio dice cosa hai cambiato e, se serve, perché. Tra qualche mese sarà l'unica spiegazione che avrai.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Rivedere la storia</b></span></h3>
+<p class="p7"><span class="s4">git log</span></p>
+<p class="p7"><span class="s4">git log --oneline</span></p>
+<p class="p5"><span class="s4">Il primo mostra ogni commit con autore e data; il secondo una riga per commit. Se la lista è lunga, esci con il tasto </span><span class="s6">q</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Vedere le differenze</b></span></h3>
+<p class="p7"><span class="s4">git diff</span></p>
+<p class="p7"><span class="s4">git diff --staged</span></p>
+<p class="p5"><span class="s4">Il primo confronta il working directory con lo staging; il secondo confronta lo staging con l'ultimo commit. Anche qui, </span><span class="s6">q</span><span class="s4"> per uscire.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Escludere file con .gitignore</b></span></h3>
+<p class="p5"><span class="s4">Alcuni file non vanno nel repository: file compilati, impostazioni dell'IDE, password. Si elencano in un file chiamato </span><span class="s6">.gitignore</span><span class="s4">, nella cartella principale:</span></p>
+<p class="p7"><span class="s4">target/</span></p>
+<p class="p7"><span class="s4">.idea/</span></p>
+<p class="p7"><span class="s4">*.class</span></p>
+<p class="p7"><span class="s4">.env</span></p>
+<p class="p5"><span class="s4">Crealo prima del primo commit. Un file già committato non viene ignorato retroattivamente: va tolto con </span><span class="s6">git rm --cached nome-file</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Il ciclo completo</b></span></h3>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td16">
+        <p class="p10"><span class="s4"><b>Passo</b></span></p>
+      </td>
+      <td valign="top" class="td17">
+        <p class="p10"><span class="s4"><b>Comando</b></span></p>
+      </td>
+      <td valign="top" class="td18">
+        <p class="p10"><span class="s4"><b>Cosa succede</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td19">
+        <p class="p11"><span class="s4">1. Modifichi</span></p>
+      </td>
+      <td valign="top" class="td20">
+        <p class="p11"><span class="s4">(il tuo editor)</span></p>
+      </td>
+      <td valign="top" class="td21">
+        <p class="p11"><span class="s4">Cambiano i file nel working directory</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td22">
+        <p class="p11"><span class="s4">2. Guardi</span></p>
+      </td>
+      <td valign="top" class="td23">
+        <p class="p12"><span class="s8">git status</span></p>
+      </td>
+      <td valign="top" class="td24">
+        <p class="p11"><span class="s4">Vedi lo stato di ogni file</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td19">
+        <p class="p11"><span class="s4">3. Aggiungi</span></p>
+      </td>
+      <td valign="top" class="td20">
+        <p class="p12"><span class="s8">git add</span></p>
+      </td>
+      <td valign="top" class="td21">
+        <p class="p11"><span class="s4">Le modifiche vanno in staging</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td22">
+        <p class="p11"><span class="s4">4. Salvi</span></p>
+      </td>
+      <td valign="top" class="td23">
+        <p class="p12"><span class="s8">git commit -m "..."</span></p>
+      </td>
+      <td valign="top" class="td24">
+        <p class="p11"><span class="s4">Nasce un commit nel repository locale</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td19">
+        <p class="p11"><span class="s4">5. Invii</span></p>
+      </td>
+      <td valign="top" class="td20">
+        <p class="p12"><span class="s8">git push</span></p>
+      </td>
+      <td valign="top" class="td21">
+        <p class="p11"><span class="s4">Il commit arriva su GitHub</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>7. Lavorare con GitHub</b></span></h2>
+<p class="p5"><span class="s4">Hai due modi per collegare una cartella a GitHub: partire da una cartella tua e collegarla a un repository nuovo, oppure clonare un repository che esiste già. Il risultato è lo stesso.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Percorso A: dalla cartella locale a GitHub</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"></span><span class="s4">Su github.com scegli <b>New repository</b>, dai un nome e lascia il repository vuoto: niente README, niente </span><span class="s6">.gitignore</span><span class="s4">.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Copia l'indirizzo che GitHub ti mostra, simile a </span><span class="s6">https://github.com/tuo-username/mio-progetto.git</span><span class="s4">.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Nella cartella locale, dopo almeno un commit, collega il remoto e invia:</span></li>
+</ol>
+<p class="p7"><span class="s4">git remote add origin https://github.com/tuo-username/mio-progetto.git</span></p>
+<p class="p7"><span class="s4">git branch -M main</span></p>
+<p class="p7"><span class="s4">git push -u origin main</span></p>
+<p class="p5"><span class="s4">Il </span><span class="s6">-u</span><span class="s4"> ricorda il collegamento: dopo la prima volta basta scrivere </span><span class="s6">git push</span><span class="s4">. Per controllare i remoti collegati usa </span><span class="s6">git remote -v</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Percorso B: clonare un repository esistente</b></span></h3>
+<p class="p7"><span class="s4">git clone https://github.com/utente/repository.git</span></p>
+<p class="p7"><span class="s4">cd repository</span></p>
+<p class="p5"><span class="s4">Il clone scarica tutto: file, storia e collegamento a </span><span class="s6">origin</span><span class="s4">. Non serve né </span><span class="s6">git init</span><span class="s4"> né </span><span class="s6">git remote add</span><span class="s4">. Un repository pubblico si può clonare senza account; per fare </span><span class="s6">push</span><span class="s4"> servono permessi di scrittura.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Inviare le modifiche: push</b></span></h3>
+<p class="p7"><span class="s4">git push</span></p>
+<p class="p5"><span class="s4">I commit che hai solo in locale arrivano su GitHub. Ricarica la pagina del repository per vederli.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Scaricare le novità: pull</b></span></h3>
+<p class="p7"><span class="s4">git pull</span></p>
+<p class="p5"><span class="s4">Scarica i commit che altri hanno inviato e li unisce al tuo lavoro. Fallo sempre prima di iniziare a lavorare e prima di un </span><span class="s6">push</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Quando il push viene rifiutato</b></span></h3>
+<p class="p5"><span class="s4">Se vedi </span><span class="s6">rejected</span><span class="s4"> e </span><span class="s6">fetch first</span><span class="s4">, qualcuno ha inviato commit che tu non hai. Git non ti lascia sovrascriverli. La soluzione è sempre la stessa:</span></p>
+<p class="p7"><span class="s4">git pull</span></p>
+<p class="p7"><span class="s4">git push</span></p>
+<p class="p5"><span class="s4">Se il </span><span class="s6">pull</span><span class="s4"> segnala un conflitto, vai alla sezione sui branch e sul merge.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>HTTPS o SSH</b></span></h3>
+<p class="p5"><span class="s4">L'indirizzo del repository può avere due forme: </span><span class="s6">https://github.com/...</span><span class="s4"> oppure </span><span class="s6">git@github.com:...</span><span class="s4">. La prima usa l'accesso web visto nella sezione 5, la seconda le chiavi SSH. I comandi non cambiano. Se hai sbagliato forma, correggi con </span><span class="s6">git remote set-url origin &lt;nuovo-indirizzo&gt;</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Schema riassuntivo</b></span></h3>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td25">
+        <p class="p10"><span class="s4"><b>Voglio...</b></span></p>
+      </td>
+      <td valign="top" class="td26">
+        <p class="p10"><span class="s4"><b>Comando</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td27">
+        <p class="p11"><span class="s4">Copiare un repo da GitHub</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p12"><span class="s8">git clone &lt;url&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td29">
+        <p class="p11"><span class="s4">Collegare una cartella mia a un repo vuoto</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p12"><span class="s8">git remote add origin &lt;url&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td27">
+        <p class="p11"><span class="s4">Inviare i miei commit</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p12"><span class="s8">git push</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td29">
+        <p class="p11"><span class="s4">Scaricare i commit degli altri</span></p>
+      </td>
+      <td valign="top" class="td30">
+        <p class="p12"><span class="s8">git pull</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td27">
+        <p class="p11"><span class="s4">Vedere a quale remoto sono collegato</span></p>
+      </td>
+      <td valign="top" class="td28">
+        <p class="p12"><span class="s8">git remote -v</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>8. Branch e merge</b></span></h2>
+<p class="p5"><span class="s4">Un branch è una linea di sviluppo separata. Ti permette di lavorare a una funzione nuova senza rischiare di rompere </span><span class="s6">main</span><span class="s4">, e permette a più persone di lavorare in parallelo.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Perché usarli</b></span></h3>
+<p class="p5"><span class="s4">Immagina che tu e un collega modifichiate lo stesso progetto. Se lavorate entrambi su </span><span class="s6">main</span><span class="s4">, vi pestate i piedi a ogni </span><span class="s6">push</span><span class="s4">. Se ognuno ha il suo branch, le modifiche si uniscono solo quando sono pronte.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Comandi essenziali</b></span></h3>
+<p class="p7"><span class="s4">git branch</span></p>
+<p class="p7"><span class="s4">git switch -c nome-branch</span></p>
+<p class="p7"><span class="s4">git switch main</span></p>
+<p class="p7"><span class="s4">git branch -d nome-branch</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s9"></span><span class="s6">git branch</span><span class="s4"> elenca i branch locali; quello attuale ha un asterisco.</span></li>
+  <li class="li6"><span class="s9"></span><span class="s6">git switch -c</span><span class="s4"> crea un branch nuovo e ci passa sopra.</span></li>
+  <li class="li6"><span class="s9"></span><span class="s6">git switch</span><span class="s4"> torna su un branch esistente.</span></li>
+  <li class="li6"><span class="s9"></span><span class="s6">git branch -d</span><span class="s4"> elimina un branch già unito.</span></li>
+</ul>
+<p class="p5"><span class="s4">I file nella cartella cambiano quando cambi branch: è normale, Git mostra la versione di quel ramo. Se hai modifiche non salvate, Git può rifiutarsi di cambiare. Fai prima un commit.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Dare un buon nome ai branch</b></span></h3>
+<p class="p5"><span class="s4">Un nome breve che dice cosa fai: </span><span class="s6">fix-login</span><span class="s4">, </span><span class="s6">aggiungi-readme</span><span class="s4">, </span><span class="s6">esercizio-2</span><span class="s4">. Evita spazi e maiuscole.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Unire un branch: merge</b></span></h3>
+<p class="p5"><span class="s4">Per portare il lavoro di un branch dentro </span><span class="s6">main</span><span class="s4">:</span></p>
+<p class="p7"><span class="s4">git switch main</span></p>
+<p class="p7"><span class="s4">git pull</span></p>
+<p class="p7"><span class="s4">git merge nome-branch</span></p>
+<p class="p5"><span class="s4">Sei tu a decidere dove arrivano le modifiche: ti sposti sul branch di destinazione e unisci quello di origine. Su GitHub questo passaggio si fa di solito con una pull request (sezione 9).</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Inviare un branch a GitHub</b></span></h3>
+<p class="p7"><span class="s4">git push -u origin nome-branch</span></p>
+<p class="p5"><span class="s4">La prima volta serve </span><span class="s6">-u</span><span class="s4">. Poi basta </span><span class="s6">git push</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>I conflitti</b></span></h3>
+<p class="p5"><span class="s4">Un conflitto nasce quando due persone modificano le stesse righe dello stesso file. Git non può scegliere al posto tuo, quindi si ferma e ti chiede aiuto. Non è un errore grave, è una domanda.</span></p>
+<p class="p5"><span class="s4">Git segna il file in questo modo:</span></p>
+<p class="p7"><span class="s4">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span></p>
+<p class="p7"><span class="s4">System.out.println("Ciao");</span></p>
+<p class="p7"><span class="s4">=======</span></p>
+<p class="p7"><span class="s4">System.out.println("Buongiorno");</span></p>
+<p class="p7"><span class="s4">&gt;&gt;&gt;&gt;&gt;&gt;&gt; nome-branch</span></p>
+<p class="p5"><span class="s4">La parte tra </span><span class="s6">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="s4"> e </span><span class="s6">=======</span><span class="s4"> è la tua versione; quella tra </span><span class="s6">=======</span><span class="s4"> e </span><span class="s6">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="s4"> è l'altra.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Risolvere un conflitto, passo per passo</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"></span><span class="s4">Lancia </span><span class="s6">git status</span><span class="s4">: i file in conflitto compaiono come <i>both modified</i>.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Apri il file e decidi cosa tenere: una versione, l'altra o una combinazione.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Cancella le tre righe con </span><span class="s6">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span><span class="s4">, </span><span class="s6">=======</span><span class="s4"> e </span><span class="s6">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span><span class="s4">. Devono sparire tutte.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Salva il file, poi </span><span class="s6">git add nome-file</span><span class="s4">.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Concludi con </span><span class="s6">git commit</span><span class="s4"> e, se serve, </span><span class="s6">git push</span><span class="s4">.</span></li>
+</ol>
+<p class="p5"><span class="s4">Se ti spaventi, puoi tornare allo stato precedente con </span><span class="s6">git merge --abort</span><span class="s4">. Il consiglio per evitare i conflitti è semplice: fai </span><span class="s6">git pull</span><span class="s4"> spesso e lavora su file diversi quando possibile.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>9. Fork e pull request</b></span></h2>
+<p class="p5"><span class="s4">Non puoi fare </span><span class="s6">push</span><span class="s4"> nel repository di uno sconosciuto, e non vorresti che lo facesse nessuno nel tuo. Fork e pull request sono il modo in cui GitHub risolve il problema.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Il flusso in sintesi</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Fork.</b> Crei la tua copia del repository sul tuo account GitHub.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Clone.</b> Scarichi il tuo fork sul computer.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Branch e commit.</b> Lavori su un branch e salvi le modifiche.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Push.</b> Invii il branch al tuo fork.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Pull request.</b> Chiedi al proprietario del repository originale di accogliere le tue modifiche.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Review e merge.</b> Il proprietario guarda, commenta e, se va bene, unisce.</span></li>
+</ol>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Fork</b></span></h3>
+<p class="p5"><span class="s4">In alto a destra, nella pagina del repository, c'è il pulsante <b>Fork</b>. Scegli il tuo account e GitHub crea la copia. Il fork resta collegato all'originale, che si chiama </span><span class="s6">upstream</span><span class="s4">, ma i due si aggiornano separatamente.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>La pull request</b></span></h3>
+<p class="p5"><span class="s4">Dopo il </span><span class="s6">push</span><span class="s4"> del tuo branch, GitHub mostra un pulsante per aprire una pull request. Scrivi un titolo chiaro e una breve descrizione: cosa hai cambiato e perché. La PR mostra tutte le differenze nella scheda <b>Files changed</b>.</span></p>
+<p class="p5"><span class="s4">Chi riceve la PR può commentare le righe, chiedere correzioni, approvare. Se aggiungi altri commit allo stesso branch e fai </span><span class="s6">push</span><span class="s4">, la PR si aggiorna da sola.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Come si chiude una PR</b></span></h3>
+<p class="p5"><span class="s4">Quando la PR è approvata, il maintainer sceglie come unirla:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Create a merge commit.</b> Mantiene tutti i commit e aggiunge un commit di unione.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Squash and merge.</b> Raggruppa tutti i commit in uno.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Rebase and merge.</b> Riapplica i commit uno per uno, senza commit di unione.</span></li>
+</ul>
+<p class="p5"><span class="s4">Non devi scegliere tu, quando contribuisci a un progetto altrui. Una PR può anche essere chiusa senza unione, ed è un esito normale.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Pull request anche dentro lo stesso repository</b></span></h3>
+<p class="p5"><span class="s4">In squadra di solito non si usa il fork: ognuno ha i permessi sul repository comune, crea un branch e apre una PR verso </span><span class="s6">main</span><span class="s4">. Il flusso è identico, salvo i primi due passi.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Un caso reale: diskuse</b></span></h3>
+<p class="p5"><span class="s4">Il repository </span><span class="s6">msciab/diskuse</span><span class="s4"> di Michele Sciabarra è pubblico. Nell'esercizio lo cloniamo e guardiamo la sua storia. Sulla pagina del repository trovi:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">il pulsante <b>Code</b>, da cui copi l'indirizzo per il clone;</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">la scheda <b>Pull requests</b>, dove si vede come altri hanno proposto modifiche;</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">la scheda <b>Commits</b>, con l'intera storia del progetto.</span></li>
+</ul>
+<p class="p5"><span class="s4">Leggere repository di altri è il modo più veloce per imparare come lavorano i professionisti.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Contribuire a un progetto open source</b></span></h3>
+<p class="p5"><span class="s4">Prima di aprire una PR su un progetto altrui, leggi il file </span><span class="s6">README</span><span class="s4"> e, se c'è, </span><span class="s6">CONTRIBUTING.md</span><span class="s4">. Spesso spiegano le regole di stile e il processo. Per cominciare, cerca le issue con l'etichetta <i>good first issue</i>.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>10. Annullare e recuperare</b></span></h2>
+<p class="p5"><span class="s4">Git è una rete di sicurezza: quasi tutto quello che hai salvato in un commit si può recuperare. Il comando giusto dipende da <i>dove</i> si trova l'errore.</span></p>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td31">
+        <p class="p10"><span class="s4"><b>Situazione</b></span></p>
+      </td>
+      <td valign="top" class="td32">
+        <p class="p10"><span class="s4"><b>Comando</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td33">
+        <p class="p11"><span class="s4">Ho modificato un file e voglio buttare le modifiche</span></p>
+      </td>
+      <td valign="top" class="td34">
+        <p class="p12"><span class="s8">git restore file</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td35">
+        <p class="p11"><span class="s4">Ho fatto </span><span class="s7">git add</span><span class="s4"> per sbaglio</span></p>
+      </td>
+      <td valign="top" class="td36">
+        <p class="p12"><span class="s8">git restore --staged file</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td33">
+        <p class="p11"><span class="s4">Ho sbagliato il messaggio dell'ultimo commit (non ancora inviato)</span></p>
+      </td>
+      <td valign="top" class="td34">
+        <p class="p12"><span class="s8">git commit --amend -m "nuovo messaggio"</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td35">
+        <p class="p11"><span class="s4">Voglio annullare un commit già inviato</span></p>
+      </td>
+      <td valign="top" class="td36">
+        <p class="p12"><span class="s8">git revert &lt;commit&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td33">
+        <p class="p11"><span class="s4">Voglio tornare indietro in locale, buttando commit</span></p>
+      </td>
+      <td valign="top" class="td34">
+        <p class="p12"><span class="s8">git reset --hard &lt;commit&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td35">
+        <p class="p11"><span class="s4">Ho perso dei commit</span></p>
+      </td>
+      <td valign="top" class="td36">
+        <p class="p12"><span class="s8">git reflog</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Buttare le modifiche non salvate</b></span></h3>
+<p class="p7"><span class="s4">git restore Main.java</span></p>
+<p class="p5"><span class="s4">Il file torna com'era nell'ultimo commit. Attenzione: le modifiche buttate non si recuperano, perché non erano mai state salvate.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Togliere un file dallo staging</b></span></h3>
+<p class="p7"><span class="s4">git restore --staged Main.java</span></p>
+<p class="p5"><span class="s4">Il file resta modificato sul disco, ma non entrerà nel prossimo commit.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Correggere l'ultimo commit</b></span></h3>
+<p class="p7"><span class="s4">git commit --amend -m "Messaggio corretto"</span></p>
+<p class="p5"><span class="s4">Va bene solo se il commit non è ancora stato inviato con </span><span class="s6">push</span><span class="s4">. Cambiare la storia già condivisa crea problemi a chi lavora con te.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Annullare un commit già condiviso: revert</b></span></h3>
+<p class="p7"><span class="s4">git log --oneline</span></p>
+<p class="p7"><span class="s4">git revert a1b2c3d</span></p>
+<p class="p5"><span class="s4">Il codice </span><span class="s6">a1b2c3d</span><span class="s4"> è l'inizio dell'identificativo del commit, visibile in </span><span class="s6">git log --oneline</span><span class="s4">. Il comando crea un nuovo commit che fa l'operazione inversa. La storia resta intatta ed è la scelta sicura quando il lavoro è già su GitHub.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Tornare indietro: reset</b></span></h3>
+<p class="p7"><span class="s4">git reset --hard a1b2c3d</span></p>
+<p class="p5"><span class="s4">Sposta il branch su quel commit e butta tutto quello che c'era dopo, comprese le modifiche non salvate. È un comando distruttivo: usalo solo sul tuo lavoro locale, mai su commit già inviati a GitHub.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Il paracadute: reflog</b></span></h3>
+<p class="p7"><span class="s4">git reflog</span></p>
+<p class="p5"><span class="s4">Elenca tutti i punti in cui è stato il tuo repository, anche quelli che </span><span class="s6">git log</span><span class="s4"> non mostra più. Se un </span><span class="s6">reset</span><span class="s4"> ti ha fatto perdere dei commit, trova qui il loro codice e torna indietro con </span><span class="s6">git reset --hard &lt;codice&gt;</span><span class="s4">.</span></p>
+<p class="p5"><span class="s4">Regola pratica: finché una cosa è stata committata, è quasi sempre recuperabile. Quello che non è mai stato committato, no.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>11. Git nei progetti Java</b></span></h2>
+<p class="p5"><span class="s4">Un progetto Java produce molti file che non sono codice tuo: classi compilate, impostazioni dell'IDE, cartelle di build. Vanno esclusi dal repository, altrimenti ogni commit si riempie di rumore.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Cosa va nel repository</b></span></h3>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">Il codice sorgente (</span><span class="s6">src/</span><span class="s4">).</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">I file di build (</span><span class="s6">pom.xml</span><span class="s4"> per Maven, </span><span class="s6">build.gradle</span><span class="s4"> per Gradle).</span></li>
+  <li class="li13"><span class="s10"></span><span class="s11">Il </span><span class="s8">README.md</span><span class="s11"> e il </span><span class="s8">.gitignore</span><span class="s11">.</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Cosa non ci va</b></span></h3>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">Le classi compilate (</span><span class="s6">*.class</span><span class="s4">) e le cartelle di build (</span><span class="s6">target/</span><span class="s4">, </span><span class="s6">build/</span><span class="s4">).</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Le impostazioni personali dell'IDE (</span><span class="s6">.idea/</span><span class="s4">, </span><span class="s6">*.iml</span><span class="s4">, </span><span class="s6">.vscode/</span><span class="s4">).</span></li>
+  <li class="li13"><span class="s10"></span><span class="s11">I file con credenziali (</span><span class="s8">.env</span><span class="s11">, </span><span class="s8">application-local.properties</span><span class="s11">).</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">I file di sistema (</span><span class="s6">.DS_Store</span><span class="s4">, </span><span class="s6">Thumbs.db</span><span class="s4">).</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Un .gitignore di partenza</b></span></h3>
+<p class="p7"><span class="s4"># Build</span></p>
+<p class="p7"><span class="s4">target/</span></p>
+<p class="p7"><span class="s4">build/</span></p>
+<p class="p7"><span class="s4">*.class</span></p>
+<p class="p7"><span class="s4">*.jar</span></p>
+<p class="p14"><span class="s4"></span><br></p>
+<p class="p7"><span class="s4"># IDE</span></p>
+<p class="p7"><span class="s4">.idea/</span></p>
+<p class="p7"><span class="s4">*.iml</span></p>
+<p class="p7"><span class="s4">.vscode/</span></p>
+<p class="p7"><span class="s4">.project</span></p>
+<p class="p7"><span class="s4">.classpath</span></p>
+<p class="p7"><span class="s4">.settings/</span></p>
+<p class="p14"><span class="s4"></span><br></p>
+<p class="p7"><span class="s4"># Sistema</span></p>
+<p class="p7"><span class="s4">.DS_Store</span></p>
+<p class="p7"><span class="s4">Thumbs.db</span></p>
+<p class="p14"><span class="s4"></span><br></p>
+<p class="p7"><span class="s4"># Segreti e configurazioni locali</span></p>
+<p class="p7"><span class="s4">.env</span></p>
+<p class="p7"><span class="s4">application-local.properties</span></p>
+<p class="p5"><span class="s4">Puoi anche partire da un modello: nella creazione del repository su GitHub, il menu <i>Add .gitignore</i> offre il modello <b>Java</b>.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Git dentro l'IDE</b></span></h3>
+<p class="p5"><span class="s4">IntelliJ IDEA, Eclipse e VS Code hanno un pannello Git integrato. Mostra i file modificati, permette di fare commit e push con un clic e visualizza le differenze riga per riga.</span></p>
+<p class="p5"><span class="s4">Le operazioni sono quelle che hai imparato: cambiano solo i pulsanti. Se l'IDE ti dà un errore che non capisci, apri il terminale nella cartella del progetto e lancia </span><span class="s6">git status</span><span class="s4">.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Aprire un progetto clonato</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"></span><span class="s4">Clona il repository con </span><span class="s6">git clone</span><span class="s4">.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Nell'IDE scegli <i>Open</i> e seleziona la cartella clonata.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Lascia che l'IDE importi la configurazione Maven o Gradle.</span></li>
+</ol>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Attenzione ai file già tracciati</b></span></h3>
+<p class="p5"><span class="s4">Se hai fatto un commit prima di creare il </span><span class="s6">.gitignore</span><span class="s4">, i file indesiderati ci sono già. Rimuovili dal controllo di versione, senza cancellarli dal disco:</span></p>
+<p class="p7"><span class="s4">git rm -r --cached .idea target</span></p>
+<p class="p7"><span class="s4">git commit -m "Rimuove file di build e IDE dal repository"</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>12. Buone pratiche</b></span></h2>
+<p class="p5"><span class="s4">Git permette quasi tutto. Le buone pratiche sono le abitudini che rendono il lavoro leggibile per chi verrà dopo di te, compreso te stesso tra sei mesi.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Cinque regole per non pentirsi</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Commit piccoli, con un messaggio chiaro.</b> Una modifica logica per commit.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Prima di iniziare </b></span><span class="s6"><b>git pull</b></span><span class="s4"><b>, prima di chiudere </b></span><span class="s6"><b>git push</b></span><span class="s4"><b>.</b> Così lavori sempre sull'ultima versione.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Non lavorare direttamente su </b></span><span class="s6"><b>main</b></span><span class="s4"><b>.</b> Crea un branch per ogni attività.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Mai password, token o chiavi nel repository.</b> Usa il </span><span class="s6">.gitignore</span><span class="s4">.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Nel dubbio, </b></span><span class="s6"><b>git status</b></span><span class="s4"><b>.</b> Ti dice dove sei e cosa è successo.</span></li>
+</ol>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Come scrivere un buon messaggio di commit</b></span></h3>
+<p class="p5"><span class="s4">Il messaggio risponde alla domanda: cosa fa questo commit? Una riga breve, al presente, che descrive il risultato.</span></p>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td26">
+        <p class="p10"><span class="s4"><b>Da evitare</b></span></p>
+      </td>
+      <td valign="top" class="td37">
+        <p class="p10"><span class="s4"><b>Meglio</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td28">
+        <p class="p12"><span class="s8">modifiche</span></p>
+      </td>
+      <td valign="top" class="td38">
+        <p class="p12"><span class="s8">Aggiunge la validazione dell'email nel form</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td30">
+        <p class="p12"><span class="s8">fix</span></p>
+      </td>
+      <td valign="top" class="td39">
+        <p class="p12"><span class="s8">Corregge il calcolo del totale con sconto</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td28">
+        <p class="p12"><span class="s8">ultimo commit prima di cena</span></p>
+      </td>
+      <td valign="top" class="td38">
+        <p class="p12"><span class="s8">Rinomina la classe Cliente in Customer</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p class="p5"><span class="s4">Se serve spiegare il perché, scrivi una riga vuota e poi un paragrafo di dettaglio. Puoi usare </span><span class="s6">git commit</span><span class="s4"> senza </span><span class="s6">-m</span><span class="s4"> per aprire l'editor.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Regole di squadra</b></span></h3>
+<p class="p5"><span class="s4">Quando si lavora in gruppo sullo stesso repository, conviene mettersi d'accordo all'inizio:</span></p>
+<ul class="ul2">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Chi unisce in </b></span><span class="s6"><b>main</b></span><span class="s4"><b>.</b> Per esempio solo dopo l'approvazione di un compagno.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Come si chiamano i branch.</b> Per esempio </span><span class="s6">feature/nome</span><span class="s4"> e </span><span class="s6">fix/nome</span><span class="s4">.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Chi lavora su cosa.</b> Due persone sullo stesso file significano conflitti quasi certi.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Ogni quanto si fa pull.</b> Almeno all'inizio di ogni sessione di lavoro.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Lingua dei messaggi.</b> Italiano o inglese, ma sempre la stessa.</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Il README</b></span></h3>
+<p class="p5"><span class="s4">Ogni repository dovrebbe avere un </span><span class="s6">README.md</span><span class="s4"> che spiega cos'è il progetto, come si avvia e come si usa. È la prima cosa che vede chi apre il tuo repository, e conta molto in un portfolio. Si scrive in Markdown, un linguaggio semplice per formattare il testo.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>I segreti</b></span></h3>
+<p class="p5"><span class="s4">Password, token di accesso, chiavi di servizi esterni e credenziali del database non vanno mai nel repository, nemmeno in un repository privato.</span></p>
+<p class="p5"><span class="s4">Git conserva tutta la storia: cancellare il file in un commit successivo non basta, perché il segreto resta nei commit precedenti. Se un segreto è finito su GitHub, consideralo compromesso: <b>cambialo subito</b> e solo dopo pensa a ripulire il repository.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Cosa non fare</b></span></h3>
+<ul class="ul2">
+  <li class="li6"><span class="s5"></span><span class="s4">Non usare </span><span class="s6">git push --force</span><span class="s4"> su rami condivisi: può cancellare il lavoro degli altri.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Non committare file enormi o binari inutili.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Non fare un solo commit gigante a fine giornata.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Non rimandare i </span><span class="s6">pull</span><span class="s4">: più aspetti, più grandi saranno i conflitti.</span></li>
+</ul>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>13. Problemi comuni e soluzioni</b></span></h2>
+<p class="p5"><span class="s4">Quando Git dà un errore, leggi il messaggio per intero: di solito dice anche cosa fare. Questa tabella raccoglie i casi che incontrerai più spesso.</span></p>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td40">
+        <p class="p10"><span class="s4"><b>Messaggio o sintomo</b></span></p>
+      </td>
+      <td valign="top" class="td41">
+        <p class="p10"><span class="s4"><b>Causa</b></span></p>
+      </td>
+      <td valign="top" class="td42">
+        <p class="p10"><span class="s4"><b>Soluzione</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p12"><span class="s8">git: command not found</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Git non è installato, o il terminale è stato aperto prima dell'installazione</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p11"><span class="s4">Installa Git; chiudi e riapri il terminale</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">fatal: not a git repository</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">Sei in una cartella che non è un repository</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p11"><span class="s4">Entra nella cartella giusta con </span><span class="s7">cd</span><span class="s4">, oppure lancia </span><span class="s7">git init</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p12"><span class="s8">Author identity unknown</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Nome ed email non configurati</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p12"><span class="s8">git config --global user.name</span><span class="s12"> e </span><span class="s8">user.email</span><span class="s12"> (sezione 5)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">nothing to commit, working tree clean</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">Non ci sono modifiche da salvare</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p11"><span class="s4">È normale: hai già committato tutto</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p12"><span class="s8">nothing added to commit</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Hai modificato dei file ma non li hai aggiunti</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p12"><span class="s12">Lancia </span><span class="s8">git add</span><span class="s12"> e poi </span><span class="s8">git commit</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">remote origin already exists</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">Il remoto è già collegato</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p12"><span class="s8">git remote -v</span><span class="s12"> per controllare; </span><span class="s8">git remote set-url origin &lt;url&gt;</span><span class="s12"> per cambiarlo</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p11"><span class="s7">Authentication failed</span><span class="s4"> o password rifiutata</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Stai usando la password dell'account</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p11"><span class="s4">Usa </span><span class="s7">gh auth login</span><span class="s4">, il Credential Manager o una chiave SSH (sezione 5)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">Permission denied (publickey)</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">La chiave SSH non è configurata</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p11"><span class="s4">Passa all'indirizzo HTTPS, oppure carica la chiave su GitHub</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p12"><span class="s8">repository not found</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Indirizzo sbagliato, o repository privato senza accesso</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p11"><span class="s4">Controlla l'indirizzo e di aver fatto l'accesso con l'account giusto</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">rejected ... fetch first</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">Su GitHub ci sono commit che non hai</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p12"><span class="s8">git pull</span><span class="s12"> e poi </span><span class="s8">git push</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p12"><span class="s8">CONFLICT (content)</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Due modifiche sulle stesse righe</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p11"><span class="s4">Risolvi il conflitto come nella sezione 8</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">You have unstaged changes</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">Hai modifiche non salvate e vuoi cambiare branch o fare pull</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p11"><span class="s4">Fai un commit, oppure </span><span class="s7">git stash</span><span class="s4"> per metterle da parte</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td43">
+        <p class="p11"><span class="s4">Il file </span><span class="s7">.gitignore</span><span class="s4"> non funziona</span></p>
+      </td>
+      <td valign="top" class="td44">
+        <p class="p11"><span class="s4">Il file era già stato committato</span></p>
+      </td>
+      <td valign="top" class="td45">
+        <p class="p12"><span class="s8">git rm --cached nome-file</span><span class="s12">, poi commit</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td46">
+        <p class="p12"><span class="s8">detached HEAD</span></p>
+      </td>
+      <td valign="top" class="td47">
+        <p class="p11"><span class="s4">Ti sei spostato su un commit e non su un branch</span></p>
+      </td>
+      <td valign="top" class="td48">
+        <p class="p12"><span class="s8">git switch main</span><span class="s12"> per tornare</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Un metodo per ogni problema</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Leggi il messaggio.</b> Spesso contiene la soluzione.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Lancia </b></span><span class="s6"><b>git status</b></span><span class="s4"><b>.</b> Ti dice in che stato è il repository.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Non improvvisare comandi distruttivi.</b> </span><span class="s6">reset --hard</span><span class="s4"> e </span><span class="s6">push --force</span><span class="s4"> si usano solo quando sai cosa fai.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Copia il messaggio d'errore e cercalo.</b> È quello che fanno tutti gli sviluppatori.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Chiedi aiuto con il contesto giusto.</b> Porta l'output di </span><span class="s6">git status</span><span class="s4"> e </span><span class="s6">git log --oneline</span><span class="s4">.</span></li>
+</ol>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Mettere da parte il lavoro: stash</b></span></h3>
+<p class="p5"><span class="s4">Se devi cambiare branch ma non sei pronto a fare un commit:</span></p>
+<p class="p7"><span class="s4">git stash</span></p>
+<p class="p7"><span class="s4">git switch altro-branch</span></p>
+<p class="p7"><span class="s4">...</span></p>
+<p class="p7"><span class="s4">git switch branch-originale</span></p>
+<p class="p7"><span class="s4">git stash pop</span></p>
+<p class="p5"><span class="s6">git stash</span><span class="s4"> mette le modifiche in un cassetto temporaneo; </span><span class="s6">git stash pop</span><span class="s4"> le riprende.</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Ultima risorsa</b></span></h3>
+<p class="p5"><span class="s4">Se il repository locale è in uno stato che non capisci, e il lavoro importante è già su GitHub, puoi sempre clonare di nuovo in una cartella nuova. Non è elegante, ma funziona.</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>14. Cheat sheet dei comandi</b></span></h2>
+<p class="p5"><span class="s4">Stampa questa pagina o tienila aperta mentre lavori.</span></p>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td49">
+        <p class="p10"><span class="s4"><b>Comando</b></span></p>
+      </td>
+      <td valign="top" class="td50">
+        <p class="p10"><span class="s4"><b>Cosa fa</b></span></p>
+      </td>
+      <td valign="top" class="td51">
+        <p class="p10"><span class="s4"><b>Esempio</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git --version</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Mostra la versione di Git</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git --version</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git config --global</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Imposta nome, email e preferenze</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git config --global user.name "Anna Rossi"</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git init</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Trasforma la cartella in repository</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git init</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git clone &lt;url&gt;</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Copia un repository da GitHub</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git clone https://github.com/utente/repo.git</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git status</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Mostra lo stato di ogni file</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git status</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git add</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Mette le modifiche in staging</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git add .</span><span class="s12"> oppure </span><span class="s8">git add Main.java</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git commit -m</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Salva una fotografia con un messaggio</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git commit -m "Aggiunge il README"</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git log --oneline</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Mostra la storia, una riga per commit</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git log --oneline</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git diff</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Mostra le modifiche non ancora in staging</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git diff</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git remote add origin</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Collega la cartella a un repository remoto</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git remote add origin &lt;url&gt;</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git remote -v</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Elenca i remoti collegati</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git remote -v</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git push</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Invia i commit a GitHub</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git push -u origin main</span><span class="s12"> (prima volta)</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git pull</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Scarica e unisce le novità</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git pull</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git branch</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Elenca i branch</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git branch</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git switch -c</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Crea un branch e ci passa sopra</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git switch -c fix-login</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git switch</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Cambia branch</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git switch main</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git merge</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Unisce un branch in quello attuale</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git merge fix-login</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git restore</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Butta le modifiche non salvate</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git restore Main.java</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git restore --staged</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Toglie un file dallo staging</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git restore --staged Main.java</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git revert</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Annulla un commit già condiviso con un nuovo commit</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git revert a1b2c3d</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git reset --hard</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Torna indietro e butta i commit successivi</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git reset --hard a1b2c3d</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td55">
+        <p class="p12"><span class="s8">git reflog</span></p>
+      </td>
+      <td valign="top" class="td56">
+        <p class="p11"><span class="s4">Elenca tutti gli spostamenti del repository</span></p>
+      </td>
+      <td valign="top" class="td57">
+        <p class="p12"><span class="s8">git reflog</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td52">
+        <p class="p12"><span class="s8">git stash</span></p>
+      </td>
+      <td valign="top" class="td53">
+        <p class="p11"><span class="s4">Mette da parte le modifiche non salvate</span></p>
+      </td>
+      <td valign="top" class="td54">
+        <p class="p12"><span class="s8">git stash</span><span class="s12"> e poi </span><span class="s8">git stash pop</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Il ciclo base in cinque righe</b></span></h3>
+<p class="p7"><span class="s4">git pull</span></p>
+<p class="p7"><span class="s4">git status</span></p>
+<p class="p7"><span class="s4">git add .</span></p>
+<p class="p7"><span class="s4">git commit -m "Descrizione della modifica"</span></p>
+<p class="p7"><span class="s4">git push</span></p>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Il flusso con un branch</b></span></h3>
+<p class="p7"><span class="s4">git switch -c nuova-funzione</span></p>
+<p class="p7"><span class="s4"># ... lavori, poi:</span></p>
+<p class="p7"><span class="s4">git add .</span></p>
+<p class="p7"><span class="s4">git commit -m "Descrizione"</span></p>
+<p class="p7"><span class="s4">git push -u origin nuova-funzione</span></p>
+<p class="p7"><span class="s4"># ... poi apri la pull request su GitHub</span></p>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>15. Glossario</b></span></h2>
+<table cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td valign="top" class="td10">
+        <p class="p10"><span class="s4"><b>Termine</b></span></p>
+      </td>
+      <td valign="top" class="td58">
+        <p class="p10"><span class="s4"><b>Definizione</b></span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Branch</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Linea di sviluppo parallela all'interno di un repository.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Checksum</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Codice calcolato dal contenuto di un file; Git lo usa per accorgersi di ogni modifica.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Clone</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Copia completa di un repository remoto sul proprio computer.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Commit</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Fotografia del progetto in un momento preciso, con autore, data e messaggio.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Conflitto</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Situazione in cui Git non sa quale tra due modifiche alle stesse righe tenere.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Fork</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Copia personale, su GitHub, del repository di un altro utente.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p12"><span class="s8">HEAD</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Puntatore al commit su cui ti trovi in questo momento.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Issue</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Segnalazione o attività da fare, aperta su GitHub e collegabile al codice.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Maintainer</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Chi gestisce un repository e decide quali modifiche accogliere.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Main</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Nome abituale del branch principale.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Merge</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Unione di due linee di sviluppo.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Origin</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Nome abituale del repository remoto collegato.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Pull</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Scaricare dal remoto i commit nuovi e unirli al proprio lavoro.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Pull request (PR)</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Richiesta di unire le proprie modifiche in un altro branch o repository.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Push</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Inviare al remoto i propri commit.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">README</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">File che presenta il progetto; su GitHub viene mostrato nella pagina del repository.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Remote</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Copia del repository ospitata altrove, di solito su GitHub.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Repository (repo)</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Cartella di progetto insieme alla sua storia.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Review</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Revisione delle modifiche di una PR da parte di altri.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Staging area</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Area in cui si scelgono le modifiche che entreranno nel prossimo commit.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Stash</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">Cassetto temporaneo dove mettere da parte modifiche non ancora committate.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td14">
+        <p class="p11"><span class="s4">Upstream</span></p>
+      </td>
+      <td valign="top" class="td60">
+        <p class="p11"><span class="s4">Il repository originale da cui un fork è stato creato.</span></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="td12">
+        <p class="p11"><span class="s4">Working directory</span></p>
+      </td>
+      <td valign="top" class="td59">
+        <p class="p11"><span class="s4">I file così come appaiono sul disco, modificabili con l'editor.</span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>16. Per approfondire</b></span></h2>
+<ul class="ul2">
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Pro Git</b> di Scott Chacon e Ben Straub: il libro ufficiale, gratuito e disponibile anche in italiano su git-scm.com/book.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Documentazione di GitHub</b> su docs.github.com, con guide per ogni funzione.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>GitHub Skills</b> su skills.github.com: piccoli corsi interattivi che si svolgono dentro un repository vero.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Learn Git Branching</b> su learngitbranching.js.org: un gioco visuale per capire branch e merge.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Oh Shit, Git!?!</b> su ohshitgit.com: soluzioni rapide ai problemi più comuni, in inglese.</span></li>
+  <li class="li6"><span class="s5"><b></b></span><span class="s4"><b>Il </b></span><span class="s6"><b>git help</b></span><span class="s4">: scrivendo </span><span class="s6">git help commit</span><span class="s4"> (o qualsiasi altro comando) si apre il manuale integrato.</span></li>
+</ul>
+<h3 style="margin: 0.0px 0.0px 8.0px 0.0px; font: 14.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>Come continuare dopo il corso</b></span></h3>
+<ol class="ol1">
+  <li class="li6"><span class="s5"></span><span class="s4">Crea un repository per ogni esercizio di Java che svolgi.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Scrivi un </span><span class="s6">README</span><span class="s4"> per ognuno, anche breve.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Contribuisci a un piccolo progetto open source, anche solo correggendo un refuso nella documentazione.</span></li>
+  <li class="li6"><span class="s5"></span><span class="s4">Usa branch e pull request anche nei progetti personali: è l'allenamento migliore.</span></li>
+</ol>
+<h2 style="margin: 0.0px 0.0px 12.0px 0.0px; font: 20.4px 'Helvetica Neue'; color: #0f1217; -webkit-text-stroke: #0f1217"><span class="s4"><b>17. Partecipanti</b></span></h2>
+<p class="p5"><span class="s4">Chi ha fatto l'esercizio di fork e clone compare qui. Aggiungi una riga con il tuo nome subito sotto l'ultima.</span></p>
+<ul class="ul2">
+  <li class="li15"><span class="s5"></span><span class="s4">Roberto Maggiora</span></li>
+  <li class="li16">Martina La Gatta</li>
+</ul>
 </body>
 </html>
